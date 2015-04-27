@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlStationApplication", "ControlStationApplication\ControlStationApplication.csproj", "{11283241-4B27-4F47-A277-DCE3D4B55679}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerminalApplication", "TerminalApplication\TerminalApplication.csproj", "{037F53F2-0CD5-4EEA-BBDA-8914BB61E654}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11283241-4B27-4F47-A277-DCE3D4B55679}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11283241-4B27-4F47-A277-DCE3D4B55679}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11283241-4B27-4F47-A277-DCE3D4B55679}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11283241-4B27-4F47-A277-DCE3D4B55679}.Release|Any CPU.Build.0 = Release|Any CPU
+		{037F53F2-0CD5-4EEA-BBDA-8914BB61E654}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{037F53F2-0CD5-4EEA-BBDA-8914BB61E654}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{037F53F2-0CD5-4EEA-BBDA-8914BB61E654}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{037F53F2-0CD5-4EEA-BBDA-8914BB61E654}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
