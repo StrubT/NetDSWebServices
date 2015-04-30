@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Linq;
+using System.Net;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Windows.Forms;
@@ -20,6 +21,7 @@ namespace BFH.NetDS.WebServices.ControlStation {
 		private void MainForm_Load(object sender, EventArgs e) {
 
 			serviceHost = ControlStationService.GetServiceHost();
+			ControlStationService.terminalConnected += ControlStationService_terminalConnected;
 		}
 
 		private void MainForm_FormClosed(object sender, FormClosedEventArgs e) {
@@ -28,17 +30,27 @@ namespace BFH.NetDS.WebServices.ControlStation {
 				serviceHost.Close();
 		}
 
+		private async void ControlStationService_terminalConnected(IPHostEntry terminal) {
+
+			newsStatusDataTable.Rows.Add(terminal.HostName, "connected...");
+
+			using (var clt = new TerminalServiceClient(new BasicHttpBinding(), new EndpointAddress(new UriBuilder("http", terminal.AddressList[0].ToString(), 5678).Uri))) {
+				await clt.SetNewsAsync(newsChangeTextBox.Rtf);
+				newsStatusDataTable.Rows.Find(terminal.HostName).SetField<string>("status", "done!");
+			}
+		}
+
 		private async void newsChangeButton_Click(object sender, EventArgs e) {
 
 			var news = newsChangeTextBox.Rtf;
 
-			newsStatusDataTable.Rows.Clear();
-			var trms = ControlStationService.terminals.ToDictionary(t => t, t => newsStatusDataTable.Rows.Add(t.HostName, "awaiting..."));
+			foreach (var row in newsStatusDataTable.Rows.Cast<DataRow>())
+				row.SetField("status", "awaiting...");
 
-			foreach (var trm in trms)
-				using (var clt = new TerminalServiceClient(new BasicHttpBinding(), new EndpointAddress(new UriBuilder("http", trm.Key.AddressList[0].ToString(), 5678).Uri))) {
+			foreach (var trm in ControlStationService.terminals)
+				using (var clt = new TerminalServiceClient(new BasicHttpBinding(), new EndpointAddress(new UriBuilder("http", trm.AddressList[0].ToString(), 5678).Uri))) {
 					await clt.SetNewsAsync(news);
-					trm.Value.SetField<string>("status", "done!");
+					newsStatusDataTable.Rows.Find(trm.HostName).SetField<string>("status", "done!");
 				}
 		}
 	}

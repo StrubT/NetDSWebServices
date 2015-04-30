@@ -10,17 +10,24 @@ using System.Xml.Linq;
 
 namespace BFH.NetDS.WebServices.ControlStation {
 
+	public delegate void TerminalConnected(IPHostEntry terminal);
+
 	[ServiceContract]
 	public class ControlStationService {
 
 		public static readonly Uri Uri = new Uri("http://localhost:6789/");
 
-		public static HashSet<IPHostEntry> terminals { get; private set; }
+		public static event TerminalConnected terminalConnected;
+
+		public static SortedSet<IPHostEntry> terminals { get; private set; }
 
 		private async void rememberTerminal() {
 
 			var ip = IPAddress.Parse(((RemoteEndpointMessageProperty)OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name]).Address);
-			terminals.Add(await Dns.GetHostEntryAsync(ip));
+			var trm = await Dns.GetHostEntryAsync(ip);
+
+			if (terminals.Add(trm) && terminalConnected != null)
+				terminalConnected(trm);
 		}
 
 		[OperationContract, WebGet(UriTemplate = "employee", ResponseFormat = WebMessageFormat.Json)]
@@ -84,7 +91,7 @@ namespace BFH.NetDS.WebServices.ControlStation {
 			if (terminals != null)
 				throw new InvalidOperationException("Cannot create multiple ControlStationService hosts.");
 
-			terminals = new HashSet<IPHostEntry>();
+			terminals = new SortedSet<IPHostEntry>();
 
 			var host = new WebServiceHost(typeof(ControlStationService), Uri);
 
