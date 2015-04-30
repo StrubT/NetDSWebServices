@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 
 namespace BFH.NetDS.WebServices.Terminal {
-	
+
 	[DataContract]
 	public class Statistics {
 
@@ -20,6 +15,5 @@ namespace BFH.NetDS.WebServices.Terminal {
 			this.numberOfUniqueUsers = numberOfUniqueUsers;
 			this.numberOfTimeStamps = numberOfTimeStamps;
 		}
-
 	}
 }

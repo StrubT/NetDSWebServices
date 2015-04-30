@@ -63,7 +63,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\BFH.NetDS.WebServices.Terminal\Reference.cs">
+    <Compile Include="Service References\TerminalClient\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -90,19 +90,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\BFH.NetDS.WebServices.Terminal\BFH.NetDS.WebServices.ControlStation.BFH.NetDS.WebServices.Terminal.Statistics.datasource">
+    <None Include="Service References\TerminalClient\BFH.NetDS.WebServices.ControlStation.TerminalClient.Statistics.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\BFH.NetDS.WebServices.Terminal\item.xsd">
+    <None Include="Service References\TerminalClient\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\BFH.NetDS.WebServices.Terminal\item1.xsd">
+    <None Include="Service References\TerminalClient\item1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\BFH.NetDS.WebServices.Terminal\item2.xsd">
+    <None Include="Service References\TerminalClient\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\BFH.NetDS.WebServices.Terminal\TerminalService.wsdl" />
+    <None Include="Service References\TerminalClient\TerminalService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -112,18 +112,18 @@
     <Content Include="data.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Service References\BFH.NetDS.WebServices.Terminal\Reference.svcmap">
+    <None Include="Service References\TerminalClient\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\BFH.NetDS.WebServices.Terminal\configuration.svcinfo" />
-    <None Include="Service References\BFH.NetDS.WebServices.Terminal\configuration91.svcinfo" />
+    <None Include="Service References\TerminalClient\configuration.svcinfo" />
+    <None Include="Service References\TerminalClient\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\BFH.NetDS.WebServices.Terminal\" />
+    <WCFMetadataStorage Include="Service References\TerminalClient\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
