@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ControlStation>
+<controlStation>
 	<person login="thomas" name="Thomas Reto Strub">
 		<timeStamp dateTime="2015-04-29T08:05:38.5465168+02:00" />
 		<timeStamp dateTime="2015-04-29T11:52:18.1383732+02:00" />
 		<timeStamp dateTime="2015-04-29T13:58:26.2164351+02:00" />
 		<timeStamp dateTime="2015-04-29T23:12:53.8713173+02:00" />
 	</person>
-</ControlStation>
+</controlStation>
