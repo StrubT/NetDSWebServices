@@ -27,16 +27,22 @@
 			this.rootSplitContainer = new System.Windows.Forms.SplitContainer();
 			this.employeeGroupBox = new System.Windows.Forms.GroupBox();
 			this.employeeDataGridView = new System.Windows.Forms.DataGridView();
-			this.employeeLoginColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.employeeNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.employeeDataSet = new System.Data.DataSet();
+			this.employeeDataTable = new System.Data.DataTable();
+			this.employeeLoginColumn = new System.Data.DataColumn();
+			this.employeeNameColumn = new System.Data.DataColumn();
 			this.newsGroupBox = new System.Windows.Forms.GroupBox();
 			this.newsTextBox = new System.Windows.Forms.RichTextBox();
+			this.loginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.rootSplitContainer)).BeginInit();
 			this.rootSplitContainer.Panel1.SuspendLayout();
 			this.rootSplitContainer.Panel2.SuspendLayout();
 			this.rootSplitContainer.SuspendLayout();
 			this.employeeGroupBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.employeeDataGridView)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.employeeDataSet)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.employeeDataTable)).BeginInit();
 			this.newsGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -44,66 +50,100 @@
 			// 
 			this.rootSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.rootSplitContainer.Location = new System.Drawing.Point(0, 0);
+			this.rootSplitContainer.Margin = new System.Windows.Forms.Padding(0);
 			this.rootSplitContainer.Name = "rootSplitContainer";
 			// 
 			// rootSplitContainer.Panel1
 			// 
 			this.rootSplitContainer.Panel1.Controls.Add(this.employeeGroupBox);
+			this.rootSplitContainer.Panel1.Padding = new System.Windows.Forms.Padding(5, 5, 2, 5);
+			this.rootSplitContainer.Panel1MinSize = 125;
 			// 
 			// rootSplitContainer.Panel2
 			// 
 			this.rootSplitContainer.Panel2.Controls.Add(this.newsGroupBox);
-			this.rootSplitContainer.Size = new System.Drawing.Size(792, 496);
-			this.rootSplitContainer.SplitterDistance = 476;
+			this.rootSplitContainer.Panel2.Padding = new System.Windows.Forms.Padding(2, 5, 5, 5);
+			this.rootSplitContainer.Panel2MinSize = 125;
+			this.rootSplitContainer.Size = new System.Drawing.Size(594, 403);
+			this.rootSplitContainer.SplitterDistance = 375;
+			this.rootSplitContainer.SplitterWidth = 3;
 			this.rootSplitContainer.TabIndex = 0;
 			// 
 			// employeeGroupBox
 			// 
 			this.employeeGroupBox.Controls.Add(this.employeeDataGridView);
 			this.employeeGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.employeeGroupBox.Location = new System.Drawing.Point(0, 0);
+			this.employeeGroupBox.Location = new System.Drawing.Point(5, 5);
+			this.employeeGroupBox.Margin = new System.Windows.Forms.Padding(2);
 			this.employeeGroupBox.Name = "employeeGroupBox";
-			this.employeeGroupBox.Size = new System.Drawing.Size(476, 496);
+			this.employeeGroupBox.Padding = new System.Windows.Forms.Padding(2);
+			this.employeeGroupBox.Size = new System.Drawing.Size(368, 393);
 			this.employeeGroupBox.TabIndex = 0;
 			this.employeeGroupBox.TabStop = false;
 			this.employeeGroupBox.Text = "Employees";
 			// 
 			// employeeDataGridView
 			// 
+			this.employeeDataGridView.AllowUserToAddRows = false;
+			this.employeeDataGridView.AllowUserToDeleteRows = false;
+			this.employeeDataGridView.AllowUserToResizeColumns = false;
+			this.employeeDataGridView.AllowUserToResizeRows = false;
+			this.employeeDataGridView.AutoGenerateColumns = false;
 			this.employeeDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
 			this.employeeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.employeeDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.employeeLoginColumn,
-            this.employeeNameColumn});
+            this.loginDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn});
+			this.employeeDataGridView.DataMember = "EmployeeDataTable";
+			this.employeeDataGridView.DataSource = this.employeeDataSet;
 			this.employeeDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.employeeDataGridView.Location = new System.Drawing.Point(3, 18);
+			this.employeeDataGridView.Location = new System.Drawing.Point(2, 15);
+			this.employeeDataGridView.Margin = new System.Windows.Forms.Padding(2);
 			this.employeeDataGridView.Name = "employeeDataGridView";
 			this.employeeDataGridView.ReadOnly = true;
 			this.employeeDataGridView.RowTemplate.Height = 24;
-			this.employeeDataGridView.Size = new System.Drawing.Size(470, 475);
+			this.employeeDataGridView.Size = new System.Drawing.Size(364, 376);
 			this.employeeDataGridView.TabIndex = 0;
+			// 
+			// employeeDataSet
+			// 
+			this.employeeDataSet.DataSetName = "EmployeeDataSet";
+			this.employeeDataSet.Tables.AddRange(new System.Data.DataTable[] {
+            this.employeeDataTable});
+			// 
+			// employeeDataTable
+			// 
+			this.employeeDataTable.Columns.AddRange(new System.Data.DataColumn[] {
+            this.employeeLoginColumn,
+            this.employeeNameColumn});
+			this.employeeDataTable.Constraints.AddRange(new System.Data.Constraint[] {
+            new System.Data.UniqueConstraint("Constraint1", new string[] {
+                        "login"}, true)});
+			this.employeeDataTable.PrimaryKey = new System.Data.DataColumn[] {
+        this.employeeLoginColumn};
+			this.employeeDataTable.TableName = "EmployeeDataTable";
 			// 
 			// employeeLoginColumn
 			// 
-			this.employeeLoginColumn.HeaderText = "login";
-			this.employeeLoginColumn.Name = "employeeLoginColumn";
-			this.employeeLoginColumn.ReadOnly = true;
-			this.employeeLoginColumn.Width = 63;
+			this.employeeLoginColumn.AllowDBNull = false;
+			this.employeeLoginColumn.ColumnName = "login";
+			this.employeeLoginColumn.DefaultValue = "";
 			// 
 			// employeeNameColumn
 			// 
-			this.employeeNameColumn.HeaderText = "name";
-			this.employeeNameColumn.Name = "employeeNameColumn";
-			this.employeeNameColumn.ReadOnly = true;
-			this.employeeNameColumn.Width = 68;
+			this.employeeNameColumn.AllowDBNull = false;
+			this.employeeNameColumn.ColumnName = "name";
+			this.employeeNameColumn.DefaultValue = "";
 			// 
 			// newsGroupBox
 			// 
 			this.newsGroupBox.Controls.Add(this.newsTextBox);
 			this.newsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.newsGroupBox.Location = new System.Drawing.Point(0, 0);
+			this.newsGroupBox.Location = new System.Drawing.Point(2, 5);
+			this.newsGroupBox.Margin = new System.Windows.Forms.Padding(2);
 			this.newsGroupBox.Name = "newsGroupBox";
-			this.newsGroupBox.Size = new System.Drawing.Size(312, 496);
+			this.newsGroupBox.Padding = new System.Windows.Forms.Padding(2);
+			this.newsGroupBox.Size = new System.Drawing.Size(209, 393);
 			this.newsGroupBox.TabIndex = 0;
 			this.newsGroupBox.TabStop = false;
 			this.newsGroupBox.Text = "News";
@@ -111,21 +151,37 @@
 			// newsTextBox
 			// 
 			this.newsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.newsTextBox.Location = new System.Drawing.Point(3, 18);
+			this.newsTextBox.Location = new System.Drawing.Point(2, 15);
+			this.newsTextBox.Margin = new System.Windows.Forms.Padding(2);
 			this.newsTextBox.Name = "newsTextBox";
 			this.newsTextBox.ReadOnly = true;
-			this.newsTextBox.Size = new System.Drawing.Size(306, 475);
+			this.newsTextBox.Size = new System.Drawing.Size(205, 376);
 			this.newsTextBox.TabIndex = 0;
 			this.newsTextBox.Text = "";
 			// 
+			// loginDataGridViewTextBoxColumn
+			// 
+			this.loginDataGridViewTextBoxColumn.DataPropertyName = "login";
+			this.loginDataGridViewTextBoxColumn.HeaderText = "login";
+			this.loginDataGridViewTextBoxColumn.Name = "loginDataGridViewTextBoxColumn";
+			this.loginDataGridViewTextBoxColumn.ReadOnly = true;
+			this.loginDataGridViewTextBoxColumn.Width = 54;
+			// 
+			// nameDataGridViewTextBoxColumn
+			// 
+			this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+			this.nameDataGridViewTextBoxColumn.HeaderText = "name";
+			this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+			this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+			this.nameDataGridViewTextBoxColumn.Width = 58;
+			// 
 			// MainForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(792, 496);
+			this.ClientSize = new System.Drawing.Size(594, 403);
 			this.Controls.Add(this.rootSplitContainer);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "NetDS - Web Services - Terminal";
@@ -137,6 +193,8 @@
 			this.rootSplitContainer.ResumeLayout(false);
 			this.employeeGroupBox.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.employeeDataGridView)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.employeeDataSet)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.employeeDataTable)).EndInit();
 			this.newsGroupBox.ResumeLayout(false);
 			this.ResumeLayout(false);
 
@@ -149,7 +207,11 @@
 		private System.Windows.Forms.DataGridView employeeDataGridView;
 		private System.Windows.Forms.GroupBox newsGroupBox;
 		private System.Windows.Forms.RichTextBox newsTextBox;
-		private System.Windows.Forms.DataGridViewTextBoxColumn employeeLoginColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn employeeNameColumn;
+		private System.Data.DataSet employeeDataSet;
+		private System.Data.DataTable employeeDataTable;
+		private System.Data.DataColumn employeeLoginColumn;
+		private System.Data.DataColumn employeeNameColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn loginDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
 	}
 }

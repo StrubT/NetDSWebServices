@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
+using System.ServiceModel;
 using System.ServiceModel.Web;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using BFH.NetDS.WebServices.ControlStation.TerminalClient;
 
 namespace BFH.NetDS.WebServices.ControlStation {
 
 	public partial class MainForm : Form {
 
 		private WebServiceHost serviceHost;
-		private ControlStationService service;
 
 		public MainForm() {
 
@@ -24,7 +20,6 @@ namespace BFH.NetDS.WebServices.ControlStation {
 		private void MainForm_Load(object sender, EventArgs e) {
 
 			serviceHost = ControlStationService.GetServiceHost();
-			service = (ControlStationService)serviceHost.SingletonInstance;
 		}
 
 		private void MainForm_FormClosed(object sender, FormClosedEventArgs e) {
@@ -33,8 +28,18 @@ namespace BFH.NetDS.WebServices.ControlStation {
 				serviceHost.Close();
 		}
 
-		private void newsChangeButton_Click(object sender, EventArgs e) {
+		private async void newsChangeButton_Click(object sender, EventArgs e) {
 
+			var news = newsChangeTextBox.Rtf;
+
+			newsStatusDataTable.Rows.Clear();
+			var trms = ControlStationService.terminals.ToDictionary(t => t, t => newsStatusDataTable.Rows.Add(t.HostName, "awaiting..."));
+
+			foreach (var trm in trms)
+				using (var clt = new TerminalServiceClient(new BasicHttpBinding(), new EndpointAddress(new UriBuilder("http", trm.Key.AddressList[0].ToString(), 5678).Uri))) {
+					await clt.SetNewsAsync(news);
+					trm.Value.SetField<string>("status", "done!");
+				}
 		}
 	}
 }

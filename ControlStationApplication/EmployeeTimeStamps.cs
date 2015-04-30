@@ -43,7 +43,7 @@ namespace BFH.NetDS.WebServices.ControlStation {
 		[DataMember(Name = "timeSpan")]
 		public string timeSpanFormatted {
 			get { return timeSpan.ToString("c"); }
-			set { throw new InvalidOperationException(); }
+			set { throw new InvalidOperationException("Cannot change the timespan directly."); }
 		}
 
 		public EmployeeTimeStamps(string login, IEnumerable<DateTime> dateTimes) {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Threading;
 using System.Xml.Linq;
 
@@ -7,8 +8,13 @@ namespace BFH.NetDS.WebServices.ControlStation {
 
 	internal class DataSource : IDisposable {
 
-		public static readonly FileInfo File = new FileInfo("./data.xml");
-		private static readonly Semaphore Semaphore = new Semaphore(1, 1);
+#if DEBUG
+		public static readonly FileInfo File = new FileInfo(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "data.xml"));
+#else
+		public static readonly FileInfo File = new FileInfo("data.xml");
+#endif
+
+		private static readonly Semaphore WritableSemaphore = new Semaphore(1, 1);
 
 		public bool readOnly { get; private set; }
 
@@ -21,7 +27,7 @@ namespace BFH.NetDS.WebServices.ControlStation {
 			this.readOnly = readOnly;
 
 			if (!readOnly)
-				Semaphore.WaitOne();
+				WritableSemaphore.WaitOne();
 			document = XDocument.Load(File.FullName);
 		}
 
@@ -29,7 +35,7 @@ namespace BFH.NetDS.WebServices.ControlStation {
 
 			if (!readOnly) {
 				document.Save(File.FullName);
-				Semaphore.Release();
+				WritableSemaphore.Release();
 			}
 		}
 	}

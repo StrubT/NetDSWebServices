@@ -11,7 +11,10 @@ namespace BFH.NetDS.WebServices.Terminal {
 		[DataMember]
 		public int numberOfTimeStamps { get; private set; }
 
+		public Statistics() : this(0, 0) { }
+
 		public Statistics(int numberOfUniqueUsers, int numberOfTimeStamps) {
+
 			this.numberOfUniqueUsers = numberOfUniqueUsers;
 			this.numberOfTimeStamps = numberOfTimeStamps;
 		}

@@ -39,6 +39,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlStationClient\ControlStationServiceClient.cs" />
+    <Compile Include="ControlStationClient\Employee.cs" />
+    <Compile Include="ControlStationClient\EmployeeTimeStamps.cs" />
     <Compile Include="EmployeeDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>

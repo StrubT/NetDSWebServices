@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
+using System.ServiceModel.Description;
 using System.ServiceModel.Web;
 using System.Xml.Linq;
 
@@ -14,20 +15,15 @@ namespace BFH.NetDS.WebServices.ControlStation {
 
 		public static readonly Uri Uri = new Uri("http://localhost:6789/");
 
-		public HashSet<IPAddress> terminals { get; private set; }
+		public static HashSet<IPHostEntry> terminals { get; private set; }
 
-		public ControlStationService() {
+		private async void rememberTerminal() {
 
-			this.terminals = new HashSet<IPAddress>();
+			var ip = IPAddress.Parse(((RemoteEndpointMessageProperty)OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name]).Address);
+			terminals.Add(await Dns.GetHostEntryAsync(ip));
 		}
 
-		private void rememberTerminal() {
-
-			terminals.Add(IPAddress.Parse(((RemoteEndpointMessageProperty)OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name]).Address));
-		}
-
-		[OperationContract]
-		[WebGet(UriTemplate = "employee", ResponseFormat = WebMessageFormat.Json)]
+		[OperationContract, WebGet(UriTemplate = "employee", ResponseFormat = WebMessageFormat.Json)]
 		public List<Employee> FetchEmployees() {
 
 			rememberTerminal();
@@ -40,8 +36,7 @@ namespace BFH.NetDS.WebServices.ControlStation {
 								select new Employee(l, n)).ToList();
 		}
 
-		[OperationContract]
-		[WebInvoke(Method = "POST", UriTemplate = "employee", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+		[OperationContract, WebInvoke(Method = "POST", UriTemplate = "employee", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
 		public Employee AddEmployee(Employee employee) {
 
 			rememberTerminal();
@@ -58,8 +53,7 @@ namespace BFH.NetDS.WebServices.ControlStation {
 			return employee;
 		}
 
-		[OperationContract]
-		[WebGet(UriTemplate = "employee/{login}", ResponseFormat = WebMessageFormat.Json)]
+		[OperationContract, WebGet(UriTemplate = "employee/{login}", ResponseFormat = WebMessageFormat.Json)]
 		public EmployeeTimeStamps FetchEmployeeTimeStamps(String login) {
 
 			rememberTerminal();
@@ -73,8 +67,7 @@ namespace BFH.NetDS.WebServices.ControlStation {
 																						 select d);
 		}
 
-		[OperationContract]
-		[WebInvoke(Method = "POST", UriTemplate = "employee/{login}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+		[OperationContract, WebInvoke(Method = "POST", UriTemplate = "employee/{login}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
 		public EmployeeTimeStamps AddEmployeeTimeStamps(String login, EmployeeTimeStamps timeStamps) {
 
 			rememberTerminal();
@@ -88,7 +81,23 @@ namespace BFH.NetDS.WebServices.ControlStation {
 
 		public static WebServiceHost GetServiceHost() {
 
+			if (terminals != null)
+				throw new InvalidOperationException("Cannot create multiple ControlStationService hosts.");
+
+			terminals = new HashSet<IPHostEntry>();
+
 			var host = new WebServiceHost(typeof(ControlStationService), Uri);
+
+#if DEBUG
+			var meta = host.Description.Behaviors.Find<ServiceMetadataBehavior>();
+			if (meta == null) host.Description.Behaviors.Add(meta = new ServiceMetadataBehavior());
+			meta.HttpGetEnabled = true;
+
+			var debug = host.Description.Behaviors.Find<ServiceDebugBehavior>();
+			if (debug == null) host.Description.Behaviors.Add(debug = new ServiceDebugBehavior());
+			debug.IncludeExceptionDetailInFaults = true;
+#endif
+
 			host.Open();
 			return host;
 		}

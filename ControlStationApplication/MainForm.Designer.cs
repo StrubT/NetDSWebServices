@@ -33,9 +33,13 @@
 			this.newsChangeButton = new System.Windows.Forms.Button();
 			this.newsStatusGroup = new System.Windows.Forms.GroupBox();
 			this.newsStatusGridView = new System.Windows.Forms.DataGridView();
-			this.terminalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.statusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.newsStatusDataSet = new System.Data.DataSet();
+			this.newsStatusDataTable = new System.Data.DataTable();
+			this.newsStatusTerminalColumn = new System.Data.DataColumn();
+			this.newsStatusStatusColumn = new System.Data.DataColumn();
 			this.statisticsTab = new System.Windows.Forms.TabPage();
+			this.terminalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tabControl.SuspendLayout();
 			this.newsTab.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.newsSplitContainer)).BeginInit();
@@ -46,6 +50,8 @@
 			this.newsChangeLayoutPanel.SuspendLayout();
 			this.newsStatusGroup.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.newsStatusGridView)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.newsStatusDataSet)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.newsStatusDataTable)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabControl
@@ -150,10 +156,16 @@
 			// 
 			this.newsStatusGridView.AllowUserToAddRows = false;
 			this.newsStatusGridView.AllowUserToDeleteRows = false;
+			this.newsStatusGridView.AllowUserToResizeColumns = false;
+			this.newsStatusGridView.AllowUserToResizeRows = false;
+			this.newsStatusGridView.AutoGenerateColumns = false;
+			this.newsStatusGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
 			this.newsStatusGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.newsStatusGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.terminalColumn,
-            this.statusColumn});
+            this.terminalDataGridViewTextBoxColumn,
+            this.statusDataGridViewTextBoxColumn});
+			this.newsStatusGridView.DataMember = "NewsStatusDataTable";
+			this.newsStatusGridView.DataSource = this.newsStatusDataSet;
 			this.newsStatusGridView.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.newsStatusGridView.Location = new System.Drawing.Point(3, 16);
 			this.newsStatusGridView.Name = "newsStatusGridView";
@@ -161,21 +173,35 @@
 			this.newsStatusGridView.Size = new System.Drawing.Size(630, 514);
 			this.newsStatusGridView.TabIndex = 0;
 			// 
-			// terminalColumn
+			// newsStatusDataSet
 			// 
-			this.terminalColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.terminalColumn.HeaderText = "terminal";
-			this.terminalColumn.Name = "terminalColumn";
-			this.terminalColumn.ReadOnly = true;
-			this.terminalColumn.Width = 68;
+			this.newsStatusDataSet.DataSetName = "NewsStatusDataSet";
+			this.newsStatusDataSet.Tables.AddRange(new System.Data.DataTable[] {
+            this.newsStatusDataTable});
 			// 
-			// statusColumn
+			// newsStatusDataTable
 			// 
-			this.statusColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.statusColumn.HeaderText = "status";
-			this.statusColumn.Name = "statusColumn";
-			this.statusColumn.ReadOnly = true;
-			this.statusColumn.Width = 60;
+			this.newsStatusDataTable.Columns.AddRange(new System.Data.DataColumn[] {
+            this.newsStatusTerminalColumn,
+            this.newsStatusStatusColumn});
+			this.newsStatusDataTable.Constraints.AddRange(new System.Data.Constraint[] {
+            new System.Data.UniqueConstraint("Constraint1", new string[] {
+                        "terminal"}, true)});
+			this.newsStatusDataTable.PrimaryKey = new System.Data.DataColumn[] {
+        this.newsStatusTerminalColumn};
+			this.newsStatusDataTable.TableName = "NewsStatusDataTable";
+			// 
+			// newsStatusTerminalColumn
+			// 
+			this.newsStatusTerminalColumn.AllowDBNull = false;
+			this.newsStatusTerminalColumn.ColumnName = "terminal";
+			this.newsStatusTerminalColumn.DefaultValue = "";
+			// 
+			// newsStatusStatusColumn
+			// 
+			this.newsStatusStatusColumn.AllowDBNull = false;
+			this.newsStatusStatusColumn.ColumnName = "status";
+			this.newsStatusStatusColumn.DefaultValue = "";
 			// 
 			// statisticsTab
 			// 
@@ -186,6 +212,22 @@
 			this.statisticsTab.TabIndex = 1;
 			this.statisticsTab.Text = "terminal statistics";
 			this.statisticsTab.UseVisualStyleBackColor = true;
+			// 
+			// terminalDataGridViewTextBoxColumn
+			// 
+			this.terminalDataGridViewTextBoxColumn.DataPropertyName = "terminal";
+			this.terminalDataGridViewTextBoxColumn.HeaderText = "terminal";
+			this.terminalDataGridViewTextBoxColumn.Name = "terminalDataGridViewTextBoxColumn";
+			this.terminalDataGridViewTextBoxColumn.ReadOnly = true;
+			this.terminalDataGridViewTextBoxColumn.Width = 68;
+			// 
+			// statusDataGridViewTextBoxColumn
+			// 
+			this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
+			this.statusDataGridViewTextBoxColumn.HeaderText = "status";
+			this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+			this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+			this.statusDataGridViewTextBoxColumn.Width = 60;
 			// 
 			// MainForm
 			// 
@@ -210,6 +252,8 @@
 			this.newsChangeLayoutPanel.PerformLayout();
 			this.newsStatusGroup.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.newsStatusGridView)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.newsStatusDataSet)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.newsStatusDataTable)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -225,8 +269,12 @@
 		private System.Windows.Forms.Button newsChangeButton;
 		private System.Windows.Forms.GroupBox newsStatusGroup;
 		private System.Windows.Forms.DataGridView newsStatusGridView;
-		private System.Windows.Forms.DataGridViewTextBoxColumn terminalColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn statusColumn;
 		private System.Windows.Forms.TabPage statisticsTab;
+		private System.Data.DataSet newsStatusDataSet;
+		private System.Data.DataTable newsStatusDataTable;
+		private System.Data.DataColumn newsStatusTerminalColumn;
+		private System.Data.DataColumn newsStatusStatusColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn terminalDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
 	}
 }
