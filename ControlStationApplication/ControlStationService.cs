@@ -16,16 +16,8 @@ namespace BFH.NetDS.WebServices.ControlStation {
 		public static WebServiceHost GetServiceHost() {
 
 			var host = new WebServiceHost(typeof(ControlStationService), new[] { Uri });
-
-			var meta = host.Description.Behaviors.Find<ServiceMetadataBehavior>();
-			if (meta == null) host.Description.Behaviors.Add(meta = new ServiceMetadataBehavior());
-			meta.HttpGetEnabled = true;
-
-			var debug = host.Description.Behaviors.Find<ServiceDebugBehavior>();
-			if (meta == null) host.Description.Behaviors.Add(debug = new ServiceDebugBehavior());
-			debug.IncludeExceptionDetailInFaults = true;
-
 			host.Open();
+
 			return host;
 		}
 

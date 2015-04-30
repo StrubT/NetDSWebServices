@@ -29,9 +29,9 @@ namespace BFH.NetDS.WebServices.ControlStation {
 			get {
 				var dts = timeStamps.OrderBy(d => d).ToList();
 				var ts = new TimeSpan();
-				for (var i = 1; i < dts.Count; )
+				for (var i = 0; i < dts.Count - 1; )
 					if (dts[i].Date == dts[i + 1].Date) {
-						ts += dts[i - 1] - dts[i];
+						ts += dts[i + 1] - dts[i];
 						i += 2;
 					} else
 						i++;
@@ -40,11 +40,11 @@ namespace BFH.NetDS.WebServices.ControlStation {
 			}
 		}
 
-		//[DataMember(Name = "timeSpan")]
-		//public string timeSpanFormatted {
-		//	get { return timeSpan.ToString("c"); }
-		//	set { }
-		//}
+		[DataMember(Name = "timeSpan")]
+		public string timeSpanFormatted {
+			get { return timeSpan.ToString("c"); }
+			set { throw new InvalidOperationException(); }
+		}
 
 		public EmployeeTimeStamps(string login, IEnumerable<DateTime> dateTimes) {
 
