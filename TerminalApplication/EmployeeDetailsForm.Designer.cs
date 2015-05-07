@@ -25,14 +25,14 @@
 		private void InitializeComponent() {
 			this.rootLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			this.timeStampsDataGridView = new System.Windows.Forms.DataGridView();
-			this.timeStampButton = new System.Windows.Forms.Button();
-			this.closeButton = new System.Windows.Forms.Button();
+			this.timestampDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.cumulatedTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.timeStampsDataSet = new System.Data.DataSet();
 			this.timeStampsDataTable = new System.Data.DataTable();
 			this.timeStampsTimeStampColumn = new System.Data.DataColumn();
 			this.timeStampCumulatedTimeColumn = new System.Data.DataColumn();
-			this.timestampDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.cumulatedTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.timeStampButton = new System.Windows.Forms.Button();
+			this.closeButton = new System.Windows.Forms.Button();
 			this.rootLayoutPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.timeStampsDataGridView)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.timeStampsDataSet)).BeginInit();
@@ -80,58 +80,8 @@
 			this.timeStampsDataGridView.ReadOnly = true;
 			this.timeStampsDataGridView.RowTemplate.Height = 24;
 			this.timeStampsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.timeStampsDataGridView.Size = new System.Drawing.Size(388, 283);
+			this.timeStampsDataGridView.Size = new System.Drawing.Size(388, 279);
 			this.timeStampsDataGridView.TabIndex = 0;
-			// 
-			// timeStampButton
-			// 
-			this.timeStampButton.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.timeStampButton.Location = new System.Drawing.Point(2, 289);
-			this.timeStampButton.Margin = new System.Windows.Forms.Padding(2);
-			this.timeStampButton.Name = "timeStampButton";
-			this.timeStampButton.Size = new System.Drawing.Size(192, 19);
-			this.timeStampButton.TabIndex = 1;
-			this.timeStampButton.Text = "add timestamp";
-			this.timeStampButton.UseVisualStyleBackColor = true;
-			this.timeStampButton.Click += new System.EventHandler(this.timeStampButton_Click);
-			// 
-			// closeButton
-			// 
-			this.closeButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.closeButton.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.closeButton.Location = new System.Drawing.Point(198, 289);
-			this.closeButton.Margin = new System.Windows.Forms.Padding(2);
-			this.closeButton.Name = "closeButton";
-			this.closeButton.Size = new System.Drawing.Size(192, 19);
-			this.closeButton.TabIndex = 2;
-			this.closeButton.Text = "close dialog";
-			this.closeButton.UseVisualStyleBackColor = true;
-			this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-			// 
-			// timeStampsDataSet
-			// 
-			this.timeStampsDataSet.DataSetName = "TimeStampsDataSet";
-			this.timeStampsDataSet.Tables.AddRange(new System.Data.DataTable[] {
-            this.timeStampsDataTable});
-			// 
-			// timeStampsDataTable
-			// 
-			this.timeStampsDataTable.Columns.AddRange(new System.Data.DataColumn[] {
-            this.timeStampsTimeStampColumn,
-            this.timeStampCumulatedTimeColumn});
-			this.timeStampsDataTable.TableName = "TimeStampsDataTable";
-			// 
-			// timeStampsTimeStampColumn
-			// 
-			this.timeStampsTimeStampColumn.AllowDBNull = false;
-			this.timeStampsTimeStampColumn.ColumnName = "timestamp";
-			this.timeStampsTimeStampColumn.DefaultValue = "";
-			// 
-			// timeStampCumulatedTimeColumn
-			// 
-			this.timeStampCumulatedTimeColumn.AllowDBNull = false;
-			this.timeStampCumulatedTimeColumn.ColumnName = "cumulated time";
-			this.timeStampCumulatedTimeColumn.DefaultValue = "";
 			// 
 			// timestampDataGridViewTextBoxColumn
 			// 
@@ -149,6 +99,63 @@
 			this.cumulatedTimeDataGridViewTextBoxColumn.ReadOnly = true;
 			this.cumulatedTimeDataGridViewTextBoxColumn.Width = 95;
 			// 
+			// timeStampsDataSet
+			// 
+			this.timeStampsDataSet.DataSetName = "TimeStampsDataSet";
+			this.timeStampsDataSet.Tables.AddRange(new System.Data.DataTable[] {
+            this.timeStampsDataTable});
+			// 
+			// timeStampsDataTable
+			// 
+			this.timeStampsDataTable.Columns.AddRange(new System.Data.DataColumn[] {
+            this.timeStampsTimeStampColumn,
+            this.timeStampCumulatedTimeColumn});
+			this.timeStampsDataTable.Constraints.AddRange(new System.Data.Constraint[] {
+            new System.Data.UniqueConstraint("Constraint1", new string[] {
+                        "timestamp"}, true)});
+			this.timeStampsDataTable.PrimaryKey = new System.Data.DataColumn[] {
+        this.timeStampsTimeStampColumn};
+			this.timeStampsDataTable.TableName = "TimeStampsDataTable";
+			// 
+			// timeStampsTimeStampColumn
+			// 
+			this.timeStampsTimeStampColumn.AllowDBNull = false;
+			this.timeStampsTimeStampColumn.ColumnName = "timestamp";
+			this.timeStampsTimeStampColumn.DefaultValue = "";
+			// 
+			// timeStampCumulatedTimeColumn
+			// 
+			this.timeStampCumulatedTimeColumn.AllowDBNull = false;
+			this.timeStampCumulatedTimeColumn.ColumnName = "cumulated time";
+			this.timeStampCumulatedTimeColumn.DefaultValue = "";
+			// 
+			// timeStampButton
+			// 
+			this.timeStampButton.AutoSize = true;
+			this.timeStampButton.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.timeStampButton.Location = new System.Drawing.Point(2, 285);
+			this.timeStampButton.Margin = new System.Windows.Forms.Padding(2);
+			this.timeStampButton.Name = "timeStampButton";
+			this.timeStampButton.Size = new System.Drawing.Size(192, 23);
+			this.timeStampButton.TabIndex = 1;
+			this.timeStampButton.Text = "add timestamp";
+			this.timeStampButton.UseVisualStyleBackColor = true;
+			this.timeStampButton.Click += new System.EventHandler(this.timeStampButton_Click);
+			// 
+			// closeButton
+			// 
+			this.closeButton.AutoSize = true;
+			this.closeButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.closeButton.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.closeButton.Location = new System.Drawing.Point(198, 285);
+			this.closeButton.Margin = new System.Windows.Forms.Padding(2);
+			this.closeButton.Name = "closeButton";
+			this.closeButton.Size = new System.Drawing.Size(192, 23);
+			this.closeButton.TabIndex = 2;
+			this.closeButton.Text = "close dialog";
+			this.closeButton.UseVisualStyleBackColor = true;
+			this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+			// 
 			// EmployeeDetailsForm
 			// 
 			this.AcceptButton = this.timeStampButton;
@@ -163,6 +170,7 @@
 			this.Text = "EmployeeDetailsForm";
 			this.Load += new System.EventHandler(this.EmployeeDetailsForm_Load);
 			this.rootLayoutPanel.ResumeLayout(false);
+			this.rootLayoutPanel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.timeStampsDataGridView)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.timeStampsDataSet)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.timeStampsDataTable)).EndInit();

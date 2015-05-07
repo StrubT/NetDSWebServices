@@ -30,15 +30,16 @@ namespace BFH.NetDS.WebServices.Terminal.ControlStationClient {
 
 		public EmployeeTimeStamps FetchEmployeeTimeStamps(String login) { return Sync(FetchEmployeeTimeStampsAsync(login)); }
 
-		public async Task<EmployeeTimeStamps> AddEmployeeTimeStampsAsync(String login, EmployeeTimeStamps timeStamps) { return await ServicePostAsync<EmployeeTimeStamps>(string.Format("employee/{0}", login), timeStamps); }
+		public async Task<EmployeeTimeStamps> AddEmployeeTimeStampsAsync(EmployeeTimeStamps timeStamps) { return await ServicePostAsync<EmployeeTimeStamps>(string.Format("employee/{0}", timeStamps.login), timeStamps); }
 
-		public EmployeeTimeStamps AddEmployeeTimeStamps(String login, EmployeeTimeStamps timeStamps) { return Sync(AddEmployeeTimeStampsAsync(login, timeStamps)); }
+		public EmployeeTimeStamps AddEmployeeTimeStamps(EmployeeTimeStamps timeStamps) { return Sync(AddEmployeeTimeStampsAsync(timeStamps)); }
 
 		private async Task<T> ServicePostAsync<T>(string path, T body) {
 
 			var ser = new JavaScriptSerializer();
 
 			var req = WebRequest.CreateHttp(string.Format("http://{0}:{1}/{2}", host, port, path));
+			req.Method = "POST";
 			using (var stm = new StreamWriter(await req.GetRequestStreamAsync()))
 				await stm.WriteAsync(ser.Serialize(body));
 

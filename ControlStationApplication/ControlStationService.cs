@@ -91,7 +91,7 @@ namespace BFH.NetDS.WebServices.ControlStation {
 			if (terminals != null)
 				throw new InvalidOperationException("Cannot create multiple ControlStationService hosts.");
 
-			terminals = new SortedSet<IPHostEntry>();
+			terminals = new SortedSet<IPHostEntry>(new IPHostEntryComparer());
 
 			var host = new WebServiceHost(typeof(ControlStationService), Uri);
 
@@ -107,6 +107,14 @@ namespace BFH.NetDS.WebServices.ControlStation {
 
 			host.Open();
 			return host;
+		}
+
+		private class IPHostEntryComparer : IComparer<IPHostEntry> {
+
+			public int Compare(IPHostEntry x, IPHostEntry y) {
+
+				return x.HostName.CompareTo(y.HostName);
+			}
 		}
 	}
 }

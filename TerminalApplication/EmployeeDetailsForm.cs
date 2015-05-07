@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using BFH.NetDS.WebServices.Terminal.ControlStationClient;
 
 namespace BFH.NetDS.WebServices.Terminal {
 
@@ -16,14 +18,26 @@ namespace BFH.NetDS.WebServices.Terminal {
 			this.employeeLogin = employeeLogin;
 		}
 
-		private void EmployeeDetailsForm_Load(object sender, EventArgs e) {
+		private async void EmployeeDetailsForm_Load(object sender, EventArgs e) {
 
+			showTimeStamps(await mainForm.serviceClient.FetchEmployeeTimeStampsAsync(employeeLogin));
 		}
 
-		private void timeStampButton_Click(object sender, EventArgs e) {
+		private async void timeStampButton_Click(object sender, EventArgs e) {
+
+			var timeStamp = DateTime.Now;
 
 			mainForm.statistics.uniqueUsers.Add(employeeLogin);
 			mainForm.statistics.numberOfTimeStamps++;
+
+			showTimeStamps(await mainForm.serviceClient.AddEmployeeTimeStampsAsync(new EmployeeTimeStamps() { login = employeeLogin, timeStamps = new List<DateTime> { timeStamp } }));
+		}
+
+		private void showTimeStamps(EmployeeTimeStamps timeStamps) {
+
+			timeStampsDataTable.Rows.Clear();
+
+			timeStamps.timeStamps.ForEach(s => timeStampsDataTable.Rows.Add(s, new TimeSpan()));
 		}
 
 		private void closeButton_Click(object sender, EventArgs e) {

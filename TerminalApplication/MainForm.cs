@@ -10,9 +10,10 @@ namespace BFH.NetDS.WebServices.Terminal {
 	public partial class MainForm : Form {
 
 		private ServiceHost serviceHost;
-		private ControlStationServiceClient serviceClient;
 
 		public Statistics statistics { get; private set; }
+
+		public ControlStationServiceClient serviceClient { get; private set; }
 
 		public MainForm() {
 
@@ -30,6 +31,7 @@ namespace BFH.NetDS.WebServices.Terminal {
 
 			hostTextBox.ReadOnly = true;
 			portTextBox.ReadOnly = true;
+			connectButton.Enabled = false;
 
 			serviceClient = new ControlStationServiceClient(hostTextBox.Text, int.Parse(portTextBox.Text));
 
