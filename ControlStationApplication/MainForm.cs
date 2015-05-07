@@ -58,14 +58,20 @@ namespace BFH.NetDS.WebServices.ControlStation {
 
 			if (e.TabPage == statisticsTab) {
 				statisticsDataTable.Rows.Clear();
-				var trms = ControlStationService.terminals.ToDictionary(t => t, t => statisticsDataTable.Rows.Add(t.HostName, 0, 0));
+
+				var trms = ControlStationService.terminals;
+				foreach (var trm in trms)
+					statisticsDataTable.Rows.Add(trm.HostName, 0, 0);
 
 				foreach (var trm in trms)
-					using (var clt = new TerminalServiceClient(new BasicHttpBinding(), new EndpointAddress(new UriBuilder("http", trm.Key.AddressList[0].ToString(), 5678).Uri))) {
+					using (var clt = new TerminalServiceClient(new BasicHttpBinding(), new EndpointAddress(new UriBuilder("http", trm.AddressList[0].ToString(), 5678).Uri))) {
 						var stt = await clt.GetStatisticsAsync();
-						trm.Value.SetField<int>("uniqueUsers", stt.numberOfUniqueUsers);
-						trm.Value.SetField<int>("timeStamps", stt.numberOfTimeStamps);
+						var row = statisticsDataTable.Rows.Find(trm.HostName);
+						row.SetField<int>("uniqueUsers", stt.numberOfUniqueUsers);
+						row.SetField<int>("timeStamps", stt.numberOfTimeStamps);
 					}
+
+				statisticsChart.DataBind();
 			}
 		}
 	}

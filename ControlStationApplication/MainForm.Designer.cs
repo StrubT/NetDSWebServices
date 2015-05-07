@@ -75,21 +75,19 @@
 			this.tabControl.Controls.Add(this.statisticsTab);
 			this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tabControl.Location = new System.Drawing.Point(0, 0);
-			this.tabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.tabControl.Name = "tabControl";
 			this.tabControl.SelectedIndex = 0;
-			this.tabControl.Size = new System.Drawing.Size(1297, 695);
+			this.tabControl.Size = new System.Drawing.Size(973, 565);
 			this.tabControl.TabIndex = 0;
 			this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Selected);
 			// 
 			// newsTab
 			// 
 			this.newsTab.Controls.Add(this.newsSplitContainer);
-			this.newsTab.Location = new System.Drawing.Point(4, 25);
-			this.newsTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.newsTab.Location = new System.Drawing.Point(4, 22);
 			this.newsTab.Name = "newsTab";
-			this.newsTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			this.newsTab.Size = new System.Drawing.Size(1289, 666);
+			this.newsTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+			this.newsTab.Size = new System.Drawing.Size(965, 539);
 			this.newsTab.TabIndex = 0;
 			this.newsTab.Text = "news";
 			this.newsTab.UseVisualStyleBackColor = true;
@@ -97,8 +95,7 @@
 			// newsSplitContainer
 			// 
 			this.newsSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.newsSplitContainer.Location = new System.Drawing.Point(4, 4);
-			this.newsSplitContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.newsSplitContainer.Location = new System.Drawing.Point(3, 3);
 			this.newsSplitContainer.Name = "newsSplitContainer";
 			// 
 			// newsSplitContainer.Panel1
@@ -108,9 +105,8 @@
 			// newsSplitContainer.Panel2
 			// 
 			this.newsSplitContainer.Panel2.Controls.Add(this.newsStatusGroup);
-			this.newsSplitContainer.Size = new System.Drawing.Size(1281, 658);
-			this.newsSplitContainer.SplitterDistance = 426;
-			this.newsSplitContainer.SplitterWidth = 5;
+			this.newsSplitContainer.Size = new System.Drawing.Size(959, 533);
+			this.newsSplitContainer.SplitterDistance = 318;
 			this.newsSplitContainer.TabIndex = 0;
 			// 
 			// newsChangeGroup
@@ -118,10 +114,8 @@
 			this.newsChangeGroup.Controls.Add(this.newsChangeLayoutPanel);
 			this.newsChangeGroup.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.newsChangeGroup.Location = new System.Drawing.Point(0, 0);
-			this.newsChangeGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.newsChangeGroup.Name = "newsChangeGroup";
-			this.newsChangeGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			this.newsChangeGroup.Size = new System.Drawing.Size(426, 658);
+			this.newsChangeGroup.Size = new System.Drawing.Size(318, 533);
 			this.newsChangeGroup.TabIndex = 0;
 			this.newsChangeGroup.TabStop = false;
 			this.newsChangeGroup.Text = "set new news text";
@@ -130,26 +124,24 @@
 			// 
 			this.newsChangeLayoutPanel.ColumnCount = 1;
 			this.newsChangeLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.newsChangeLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+			this.newsChangeLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.newsChangeLayoutPanel.Controls.Add(this.newsChangeTextBox, 0, 0);
 			this.newsChangeLayoutPanel.Controls.Add(this.newsChangeButton, 0, 1);
 			this.newsChangeLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.newsChangeLayoutPanel.Location = new System.Drawing.Point(4, 19);
-			this.newsChangeLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.newsChangeLayoutPanel.Location = new System.Drawing.Point(3, 16);
 			this.newsChangeLayoutPanel.Name = "newsChangeLayoutPanel";
 			this.newsChangeLayoutPanel.RowCount = 2;
 			this.newsChangeLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.newsChangeLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.newsChangeLayoutPanel.Size = new System.Drawing.Size(418, 635);
+			this.newsChangeLayoutPanel.Size = new System.Drawing.Size(312, 514);
 			this.newsChangeLayoutPanel.TabIndex = 0;
 			// 
 			// newsChangeTextBox
 			// 
 			this.newsChangeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.newsChangeTextBox.Location = new System.Drawing.Point(4, 4);
-			this.newsChangeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.newsChangeTextBox.Location = new System.Drawing.Point(3, 3);
 			this.newsChangeTextBox.Name = "newsChangeTextBox";
-			this.newsChangeTextBox.Size = new System.Drawing.Size(410, 586);
+			this.newsChangeTextBox.Size = new System.Drawing.Size(306, 475);
 			this.newsChangeTextBox.TabIndex = 0;
 			this.newsChangeTextBox.Text = "";
 			// 
@@ -157,10 +149,9 @@
 			// 
 			this.newsChangeButton.AutoSize = true;
 			this.newsChangeButton.Dock = System.Windows.Forms.DockStyle.Right;
-			this.newsChangeButton.Location = new System.Drawing.Point(282, 598);
-			this.newsChangeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.newsChangeButton.Location = new System.Drawing.Point(210, 484);
 			this.newsChangeButton.Name = "newsChangeButton";
-			this.newsChangeButton.Size = new System.Drawing.Size(132, 33);
+			this.newsChangeButton.Size = new System.Drawing.Size(99, 27);
 			this.newsChangeButton.TabIndex = 1;
 			this.newsChangeButton.Text = "set news text";
 			this.newsChangeButton.UseVisualStyleBackColor = true;
@@ -171,10 +162,8 @@
 			this.newsStatusGroup.Controls.Add(this.newsStatusGridView);
 			this.newsStatusGroup.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.newsStatusGroup.Location = new System.Drawing.Point(0, 0);
-			this.newsStatusGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.newsStatusGroup.Name = "newsStatusGroup";
-			this.newsStatusGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			this.newsStatusGroup.Size = new System.Drawing.Size(850, 658);
+			this.newsStatusGroup.Size = new System.Drawing.Size(637, 533);
 			this.newsStatusGroup.TabIndex = 1;
 			this.newsStatusGroup.TabStop = false;
 			this.newsStatusGroup.Text = "news status";
@@ -194,13 +183,12 @@
 			this.newsStatusGridView.DataMember = "NewsStatusDataTable";
 			this.newsStatusGridView.DataSource = this.newsStatusDataSet;
 			this.newsStatusGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.newsStatusGridView.Location = new System.Drawing.Point(4, 19);
-			this.newsStatusGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.newsStatusGridView.Location = new System.Drawing.Point(3, 16);
 			this.newsStatusGridView.MultiSelect = false;
 			this.newsStatusGridView.Name = "newsStatusGridView";
 			this.newsStatusGridView.ReadOnly = true;
 			this.newsStatusGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.newsStatusGridView.Size = new System.Drawing.Size(842, 635);
+			this.newsStatusGridView.Size = new System.Drawing.Size(631, 514);
 			this.newsStatusGridView.TabIndex = 0;
 			// 
 			// terminalDataGridViewTextBoxColumn
@@ -209,7 +197,7 @@
 			this.terminalDataGridViewTextBoxColumn.HeaderText = "terminal";
 			this.terminalDataGridViewTextBoxColumn.Name = "terminalDataGridViewTextBoxColumn";
 			this.terminalDataGridViewTextBoxColumn.ReadOnly = true;
-			this.terminalDataGridViewTextBoxColumn.Width = 83;
+			this.terminalDataGridViewTextBoxColumn.Width = 68;
 			// 
 			// statusDataGridViewTextBoxColumn
 			// 
@@ -217,7 +205,7 @@
 			this.statusDataGridViewTextBoxColumn.HeaderText = "status";
 			this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
 			this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-			this.statusDataGridViewTextBoxColumn.Width = 71;
+			this.statusDataGridViewTextBoxColumn.Width = 60;
 			// 
 			// newsStatusDataSet
 			// 
@@ -252,11 +240,10 @@
 			// statisticsTab
 			// 
 			this.statisticsTab.Controls.Add(this.statisticsChart);
-			this.statisticsTab.Location = new System.Drawing.Point(4, 25);
-			this.statisticsTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.statisticsTab.Location = new System.Drawing.Point(4, 22);
 			this.statisticsTab.Name = "statisticsTab";
-			this.statisticsTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			this.statisticsTab.Size = new System.Drawing.Size(1289, 666);
+			this.statisticsTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+			this.statisticsTab.Size = new System.Drawing.Size(965, 539);
 			this.statisticsTab.TabIndex = 1;
 			this.statisticsTab.Text = "terminal statistics";
 			this.statisticsTab.UseVisualStyleBackColor = true;
@@ -275,7 +262,8 @@
 			legend1.Name = "StatisticsLegend";
 			legend1.Title = "legend";
 			this.statisticsChart.Legends.Add(legend1);
-			this.statisticsChart.Location = new System.Drawing.Point(4, 4);
+			this.statisticsChart.Location = new System.Drawing.Point(3, 3);
+			this.statisticsChart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.statisticsChart.Name = "statisticsChart";
 			series1.ChartArea = "StatisticsChartArea";
 			series1.Legend = "StatisticsLegend";
@@ -289,7 +277,7 @@
 			series2.YValueMembers = "timeStamps";
 			this.statisticsChart.Series.Add(series1);
 			this.statisticsChart.Series.Add(series2);
-			this.statisticsChart.Size = new System.Drawing.Size(1281, 658);
+			this.statisticsChart.Size = new System.Drawing.Size(959, 533);
 			this.statisticsChart.TabIndex = 0;
 			this.statisticsChart.Text = "Terminal Statistics";
 			title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -309,6 +297,11 @@
             this.statisticsTerminalNameColumn,
             this.statisticsUniqueUsersColumn,
             this.statisticsTimeStampsColumn});
+			this.statisticsDataTable.Constraints.AddRange(new System.Data.Constraint[] {
+            new System.Data.UniqueConstraint("Constraint1", new string[] {
+                        "terminalName"}, true)});
+			this.statisticsDataTable.PrimaryKey = new System.Data.DataColumn[] {
+        this.statisticsTerminalNameColumn};
 			this.statisticsDataTable.TableName = "StatisticsDataTable";
 			// 
 			// statisticsTerminalNameColumn
@@ -324,7 +317,7 @@
 			this.statisticsUniqueUsersColumn.Caption = "# unique users";
 			this.statisticsUniqueUsersColumn.ColumnName = "uniqueUsers";
 			this.statisticsUniqueUsersColumn.DataType = typeof(int);
-			this.statisticsUniqueUsersColumn.DefaultValue = "0";
+			this.statisticsUniqueUsersColumn.DefaultValue = 0;
 			// 
 			// statisticsTimeStampsColumn
 			// 
@@ -332,16 +325,15 @@
 			this.statisticsTimeStampsColumn.Caption = "# time stamps";
 			this.statisticsTimeStampsColumn.ColumnName = "timeStamps";
 			this.statisticsTimeStampsColumn.DataType = typeof(int);
-			this.statisticsTimeStampsColumn.DefaultValue = "0";
+			this.statisticsTimeStampsColumn.DefaultValue = 0;
 			// 
 			// MainForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1297, 695);
+			this.ClientSize = new System.Drawing.Size(973, 565);
 			this.Controls.Add(this.tabControl);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "NetDS - Web Services - Control Station";
