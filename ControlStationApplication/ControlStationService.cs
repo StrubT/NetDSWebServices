@@ -93,7 +93,11 @@ namespace BFH.NetDS.WebServices.ControlStation {
 
 			terminals = new SortedSet<IPHostEntry>(new IPHostEntryComparer());
 
-			var host = new WebServiceHost(typeof(ControlStationService), Uri);
+			var host = new WebServiceHost(typeof(ControlStationService));
+			host.AddServiceEndpoint(typeof(ControlStationService),
+				new CustomBinding(new WebMessageEncodingBindingElement() { ContentTypeMapper = new JsonWebContentTypeMapper() },
+					new HttpTransportBindingElement() { ManualAddressing = true }),
+				Uri);
 
 #if DEBUG
 			var meta = host.Description.Behaviors.Find<ServiceMetadataBehavior>();
@@ -114,6 +118,17 @@ namespace BFH.NetDS.WebServices.ControlStation {
 			public int Compare(IPHostEntry x, IPHostEntry y) {
 
 				return x.HostName.CompareTo(y.HostName);
+			}
+		}
+
+		private class JsonWebContentTypeMapper : WebContentTypeMapper {
+
+			public override WebContentFormat GetMessageFormatForContentType(string contentType) {
+
+				if (contentType.StartsWith("application/json", StringComparison.InvariantCultureIgnoreCase))
+					return WebContentFormat.Json;
+				else
+					return WebContentFormat.Default;
 			}
 		}
 	}

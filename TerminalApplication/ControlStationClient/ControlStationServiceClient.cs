@@ -22,7 +22,7 @@ namespace BFH.NetDS.WebServices.Terminal.ControlStationClient {
 
 		public List<Employee> FetchEmployees() { return Sync(FetchEmployeesAsync()); }
 
-		public async Task<Employee> AddEmployeeAsync(Employee employee) { return await ServicePostAsync<Employee>("employee", employee); }
+		public async Task<Employee> AddEmployeeAsync(Employee employee) { return await ServicePostAsync<Employee, Employee>("employee", employee); }
 
 		public Employee AddEmployee(Employee employee) { return Sync(AddEmployeeAsync(employee)); }
 
@@ -30,32 +30,37 @@ namespace BFH.NetDS.WebServices.Terminal.ControlStationClient {
 
 		public EmployeeTimeStamps FetchEmployeeTimeStamps(String login) { return Sync(FetchEmployeeTimeStampsAsync(login)); }
 
-		public async Task<EmployeeTimeStamps> AddEmployeeTimeStampsAsync(EmployeeTimeStamps timeStamps) { return await ServicePostAsync<EmployeeTimeStamps>(string.Format("employee/{0}", timeStamps.login), timeStamps); }
+		public async Task<EmployeeTimeStamps> AddEmployeeTimeStampsAsync(EmployeeTimeStamps timeStamps) {
+
+			return (await ServicePostAsync<EmployeeTimeStamps.RequestFormatted, EmployeeTimeStamps.ResponseFormatted>(string.Format("employee/{0}", timeStamps.login), timeStamps.format())).parse();
+		}
 
 		public EmployeeTimeStamps AddEmployeeTimeStamps(EmployeeTimeStamps timeStamps) { return Sync(AddEmployeeTimeStampsAsync(timeStamps)); }
 
-		private async Task<T> ServicePostAsync<T>(string path, T body) {
+		private async Task<R> ServicePostAsync<Q, R>(string path, Q body) {
 
 			var ser = new JavaScriptSerializer();
 
-			var req = WebRequest.CreateHttp(string.Format("http://{0}:{1}/{2}", host, port, path));
+			var req = WebRequest.CreateHttp(new UriBuilder("http", host, port, path).Uri);
 			req.Method = "POST";
+			req.ContentType = "application/json";
+
 			using (var stm = new StreamWriter(await req.GetRequestStreamAsync()))
 				await stm.WriteAsync(ser.Serialize(body));
 
 			var res = (HttpWebResponse)await req.GetResponseAsync();
 			using (var stm = new StreamReader(res.GetResponseStream()))
-				return ser.Deserialize<T>(await stm.ReadToEndAsync());
+				return ser.Deserialize<R>(await stm.ReadToEndAsync());
 		}
 
-		private async Task<T> ServiceGetAsync<T>(string path) {
+		private async Task<R> ServiceGetAsync<R>(string path) {
 
 			var ser = new JavaScriptSerializer();
 
-			var req = WebRequest.CreateHttp(string.Format("http://{0}:{1}/{2}", host, port, path));
+			var req = WebRequest.CreateHttp(new UriBuilder("http", host, port, path).Uri);
 			var res = (HttpWebResponse)await req.GetResponseAsync();
 			using (var stm = new StreamReader(res.GetResponseStream()))
-				return ser.Deserialize<T>(await stm.ReadToEndAsync());
+				return ser.Deserialize<R>(await stm.ReadToEndAsync());
 		}
 
 		private T Sync<T>(Task<T> async) {

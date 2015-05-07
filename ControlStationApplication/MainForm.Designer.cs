@@ -86,7 +86,7 @@
 			this.newsTab.Controls.Add(this.newsSplitContainer);
 			this.newsTab.Location = new System.Drawing.Point(4, 22);
 			this.newsTab.Name = "newsTab";
-			this.newsTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+			this.newsTab.Padding = new System.Windows.Forms.Padding(3);
 			this.newsTab.Size = new System.Drawing.Size(965, 539);
 			this.newsTab.TabIndex = 0;
 			this.newsTab.Text = "news";
@@ -242,7 +242,7 @@
 			this.statisticsTab.Controls.Add(this.statisticsChart);
 			this.statisticsTab.Location = new System.Drawing.Point(4, 22);
 			this.statisticsTab.Name = "statisticsTab";
-			this.statisticsTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+			this.statisticsTab.Padding = new System.Windows.Forms.Padding(3);
 			this.statisticsTab.Size = new System.Drawing.Size(965, 539);
 			this.statisticsTab.TabIndex = 1;
 			this.statisticsTab.Text = "terminal statistics";
@@ -263,14 +263,16 @@
 			legend1.Title = "legend";
 			this.statisticsChart.Legends.Add(legend1);
 			this.statisticsChart.Location = new System.Drawing.Point(3, 3);
-			this.statisticsChart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.statisticsChart.Margin = new System.Windows.Forms.Padding(2);
 			this.statisticsChart.Name = "statisticsChart";
 			series1.ChartArea = "StatisticsChartArea";
+			series1.Label = "#VAL";
 			series1.Legend = "StatisticsLegend";
 			series1.Name = "# unique users";
 			series1.XValueMember = "terminalName";
 			series1.YValueMembers = "uniqueUsers";
 			series2.ChartArea = "StatisticsChartArea";
+			series2.Label = "#VAL";
 			series2.Legend = "StatisticsLegend";
 			series2.Name = "# time stamps";
 			series2.XValueMember = "terminalName";

@@ -10,6 +10,7 @@ namespace BFH.NetDS.WebServices.Terminal {
 	public partial class MainForm : Form {
 
 		private ServiceHost serviceHost;
+		private bool suppressAutoSelection;
 
 		public Statistics statistics { get; private set; }
 
@@ -35,18 +36,22 @@ namespace BFH.NetDS.WebServices.Terminal {
 
 			serviceClient = new ControlStationServiceClient(hostTextBox.Text, int.Parse(portTextBox.Text));
 
+			suppressAutoSelection = true;
 			foreach (var emp in await serviceClient.FetchEmployeesAsync())
 				employeeDataTable.Rows.Add(emp.login, emp.name);
+			suppressAutoSelection = false;
 
 			employeeDataGridView.ClearSelection();
 		}
 
 		private void employeeDataGridView_SelectionChanged(object sender, EventArgs e) {
 
-			foreach (var row in employeeDataGridView.SelectedRows.Cast<DataGridViewRow>())
-				new EmployeeDetailsForm(this, ((DataRowView)row.DataBoundItem).Row.Field<string>("login")).ShowDialog();
+			if (!suppressAutoSelection) {
+				foreach (var row in employeeDataGridView.SelectedRows.Cast<DataGridViewRow>())
+					new EmployeeDetailsForm(this, ((DataRowView)row.DataBoundItem).Row.Field<string>("login")).ShowDialog();
 
-			employeeDataGridView.ClearSelection();
+				employeeDataGridView.ClearSelection();
+			}
 		}
 
 		private void MainForm_FormClosed(object sender, FormClosedEventArgs e) {
