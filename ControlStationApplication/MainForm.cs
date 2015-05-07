@@ -53,5 +53,20 @@ namespace BFH.NetDS.WebServices.ControlStation {
 					newsStatusDataTable.Rows.Find(trm.HostName).SetField<string>("status", "done!");
 				}
 		}
+
+		private async void tabControl_Selected(object sender, TabControlEventArgs e) {
+
+			if (e.TabPage == statisticsTab) {
+				statisticsDataTable.Rows.Clear();
+				var trms = ControlStationService.terminals.ToDictionary(t => t, t => statisticsDataTable.Rows.Add(t.HostName, 0, 0));
+
+				foreach (var trm in trms)
+					using (var clt = new TerminalServiceClient(new BasicHttpBinding(), new EndpointAddress(new UriBuilder("http", trm.Key.AddressList[0].ToString(), 5678).Uri))) {
+						var stt = await clt.GetStatisticsAsync();
+						trm.Value.SetField<int>("uniqueUsers", stt.numberOfUniqueUsers);
+						trm.Value.SetField<int>("timeStamps", stt.numberOfTimeStamps);
+					}
+			}
+		}
 	}
 }

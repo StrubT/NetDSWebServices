@@ -23,6 +23,11 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.newsTab = new System.Windows.Forms.TabPage();
@@ -40,6 +45,12 @@
 			this.newsStatusTerminalColumn = new System.Data.DataColumn();
 			this.newsStatusStatusColumn = new System.Data.DataColumn();
 			this.statisticsTab = new System.Windows.Forms.TabPage();
+			this.statisticsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+			this.statisticsDataSet = new System.Data.DataSet();
+			this.statisticsDataTable = new System.Data.DataTable();
+			this.statisticsTerminalNameColumn = new System.Data.DataColumn();
+			this.statisticsUniqueUsersColumn = new System.Data.DataColumn();
+			this.statisticsTimeStampsColumn = new System.Data.DataColumn();
 			this.tabControl.SuspendLayout();
 			this.newsTab.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.newsSplitContainer)).BeginInit();
@@ -52,6 +63,10 @@
 			((System.ComponentModel.ISupportInitialize)(this.newsStatusGridView)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.newsStatusDataSet)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.newsStatusDataTable)).BeginInit();
+			this.statisticsTab.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.statisticsChart)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.statisticsDataSet)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.statisticsDataTable)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabControl
@@ -60,18 +75,21 @@
 			this.tabControl.Controls.Add(this.statisticsTab);
 			this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tabControl.Location = new System.Drawing.Point(0, 0);
+			this.tabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.tabControl.Name = "tabControl";
 			this.tabControl.SelectedIndex = 0;
-			this.tabControl.Size = new System.Drawing.Size(973, 565);
+			this.tabControl.Size = new System.Drawing.Size(1297, 695);
 			this.tabControl.TabIndex = 0;
+			this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Selected);
 			// 
 			// newsTab
 			// 
 			this.newsTab.Controls.Add(this.newsSplitContainer);
-			this.newsTab.Location = new System.Drawing.Point(4, 22);
+			this.newsTab.Location = new System.Drawing.Point(4, 25);
+			this.newsTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.newsTab.Name = "newsTab";
-			this.newsTab.Padding = new System.Windows.Forms.Padding(3);
-			this.newsTab.Size = new System.Drawing.Size(965, 539);
+			this.newsTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.newsTab.Size = new System.Drawing.Size(1289, 666);
 			this.newsTab.TabIndex = 0;
 			this.newsTab.Text = "news";
 			this.newsTab.UseVisualStyleBackColor = true;
@@ -79,7 +97,8 @@
 			// newsSplitContainer
 			// 
 			this.newsSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.newsSplitContainer.Location = new System.Drawing.Point(3, 3);
+			this.newsSplitContainer.Location = new System.Drawing.Point(4, 4);
+			this.newsSplitContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.newsSplitContainer.Name = "newsSplitContainer";
 			// 
 			// newsSplitContainer.Panel1
@@ -89,8 +108,9 @@
 			// newsSplitContainer.Panel2
 			// 
 			this.newsSplitContainer.Panel2.Controls.Add(this.newsStatusGroup);
-			this.newsSplitContainer.Size = new System.Drawing.Size(959, 533);
-			this.newsSplitContainer.SplitterDistance = 319;
+			this.newsSplitContainer.Size = new System.Drawing.Size(1281, 658);
+			this.newsSplitContainer.SplitterDistance = 426;
+			this.newsSplitContainer.SplitterWidth = 5;
 			this.newsSplitContainer.TabIndex = 0;
 			// 
 			// newsChangeGroup
@@ -98,8 +118,10 @@
 			this.newsChangeGroup.Controls.Add(this.newsChangeLayoutPanel);
 			this.newsChangeGroup.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.newsChangeGroup.Location = new System.Drawing.Point(0, 0);
+			this.newsChangeGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.newsChangeGroup.Name = "newsChangeGroup";
-			this.newsChangeGroup.Size = new System.Drawing.Size(319, 533);
+			this.newsChangeGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.newsChangeGroup.Size = new System.Drawing.Size(426, 658);
 			this.newsChangeGroup.TabIndex = 0;
 			this.newsChangeGroup.TabStop = false;
 			this.newsChangeGroup.Text = "set new news text";
@@ -108,24 +130,26 @@
 			// 
 			this.newsChangeLayoutPanel.ColumnCount = 1;
 			this.newsChangeLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.newsChangeLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.newsChangeLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
 			this.newsChangeLayoutPanel.Controls.Add(this.newsChangeTextBox, 0, 0);
 			this.newsChangeLayoutPanel.Controls.Add(this.newsChangeButton, 0, 1);
 			this.newsChangeLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.newsChangeLayoutPanel.Location = new System.Drawing.Point(3, 16);
+			this.newsChangeLayoutPanel.Location = new System.Drawing.Point(4, 19);
+			this.newsChangeLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.newsChangeLayoutPanel.Name = "newsChangeLayoutPanel";
 			this.newsChangeLayoutPanel.RowCount = 2;
 			this.newsChangeLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.newsChangeLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.newsChangeLayoutPanel.Size = new System.Drawing.Size(313, 514);
+			this.newsChangeLayoutPanel.Size = new System.Drawing.Size(418, 635);
 			this.newsChangeLayoutPanel.TabIndex = 0;
 			// 
 			// newsChangeTextBox
 			// 
 			this.newsChangeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.newsChangeTextBox.Location = new System.Drawing.Point(3, 3);
+			this.newsChangeTextBox.Location = new System.Drawing.Point(4, 4);
+			this.newsChangeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.newsChangeTextBox.Name = "newsChangeTextBox";
-			this.newsChangeTextBox.Size = new System.Drawing.Size(307, 479);
+			this.newsChangeTextBox.Size = new System.Drawing.Size(410, 586);
 			this.newsChangeTextBox.TabIndex = 0;
 			this.newsChangeTextBox.Text = "";
 			// 
@@ -133,9 +157,10 @@
 			// 
 			this.newsChangeButton.AutoSize = true;
 			this.newsChangeButton.Dock = System.Windows.Forms.DockStyle.Right;
-			this.newsChangeButton.Location = new System.Drawing.Point(231, 488);
+			this.newsChangeButton.Location = new System.Drawing.Point(282, 598);
+			this.newsChangeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.newsChangeButton.Name = "newsChangeButton";
-			this.newsChangeButton.Size = new System.Drawing.Size(79, 23);
+			this.newsChangeButton.Size = new System.Drawing.Size(132, 33);
 			this.newsChangeButton.TabIndex = 1;
 			this.newsChangeButton.Text = "set news text";
 			this.newsChangeButton.UseVisualStyleBackColor = true;
@@ -146,8 +171,10 @@
 			this.newsStatusGroup.Controls.Add(this.newsStatusGridView);
 			this.newsStatusGroup.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.newsStatusGroup.Location = new System.Drawing.Point(0, 0);
+			this.newsStatusGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.newsStatusGroup.Name = "newsStatusGroup";
-			this.newsStatusGroup.Size = new System.Drawing.Size(636, 533);
+			this.newsStatusGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.newsStatusGroup.Size = new System.Drawing.Size(850, 658);
 			this.newsStatusGroup.TabIndex = 1;
 			this.newsStatusGroup.TabStop = false;
 			this.newsStatusGroup.Text = "news status";
@@ -167,12 +194,13 @@
 			this.newsStatusGridView.DataMember = "NewsStatusDataTable";
 			this.newsStatusGridView.DataSource = this.newsStatusDataSet;
 			this.newsStatusGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.newsStatusGridView.Location = new System.Drawing.Point(3, 16);
+			this.newsStatusGridView.Location = new System.Drawing.Point(4, 19);
+			this.newsStatusGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.newsStatusGridView.MultiSelect = false;
 			this.newsStatusGridView.Name = "newsStatusGridView";
 			this.newsStatusGridView.ReadOnly = true;
 			this.newsStatusGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.newsStatusGridView.Size = new System.Drawing.Size(630, 514);
+			this.newsStatusGridView.Size = new System.Drawing.Size(842, 635);
 			this.newsStatusGridView.TabIndex = 0;
 			// 
 			// terminalDataGridViewTextBoxColumn
@@ -181,7 +209,7 @@
 			this.terminalDataGridViewTextBoxColumn.HeaderText = "terminal";
 			this.terminalDataGridViewTextBoxColumn.Name = "terminalDataGridViewTextBoxColumn";
 			this.terminalDataGridViewTextBoxColumn.ReadOnly = true;
-			this.terminalDataGridViewTextBoxColumn.Width = 68;
+			this.terminalDataGridViewTextBoxColumn.Width = 83;
 			// 
 			// statusDataGridViewTextBoxColumn
 			// 
@@ -189,7 +217,7 @@
 			this.statusDataGridViewTextBoxColumn.HeaderText = "status";
 			this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
 			this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-			this.statusDataGridViewTextBoxColumn.Width = 60;
+			this.statusDataGridViewTextBoxColumn.Width = 71;
 			// 
 			// newsStatusDataSet
 			// 
@@ -223,21 +251,97 @@
 			// 
 			// statisticsTab
 			// 
-			this.statisticsTab.Location = new System.Drawing.Point(4, 22);
+			this.statisticsTab.Controls.Add(this.statisticsChart);
+			this.statisticsTab.Location = new System.Drawing.Point(4, 25);
+			this.statisticsTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.statisticsTab.Name = "statisticsTab";
-			this.statisticsTab.Padding = new System.Windows.Forms.Padding(3);
-			this.statisticsTab.Size = new System.Drawing.Size(965, 539);
+			this.statisticsTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.statisticsTab.Size = new System.Drawing.Size(1289, 666);
 			this.statisticsTab.TabIndex = 1;
 			this.statisticsTab.Text = "terminal statistics";
 			this.statisticsTab.UseVisualStyleBackColor = true;
 			// 
+			// statisticsChart
+			// 
+			chartArea1.AxisX.MajorGrid.Enabled = false;
+			chartArea1.AxisX.Title = "terminals";
+			chartArea1.AxisY.MajorGrid.Enabled = false;
+			chartArea1.Name = "StatisticsChartArea";
+			this.statisticsChart.ChartAreas.Add(chartArea1);
+			this.statisticsChart.DataSource = this.statisticsDataSet;
+			this.statisticsChart.Dock = System.Windows.Forms.DockStyle.Fill;
+			legend1.Alignment = System.Drawing.StringAlignment.Center;
+			legend1.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+			legend1.Name = "StatisticsLegend";
+			legend1.Title = "legend";
+			this.statisticsChart.Legends.Add(legend1);
+			this.statisticsChart.Location = new System.Drawing.Point(4, 4);
+			this.statisticsChart.Name = "statisticsChart";
+			series1.ChartArea = "StatisticsChartArea";
+			series1.Legend = "StatisticsLegend";
+			series1.Name = "# unique users";
+			series1.XValueMember = "terminalName";
+			series1.YValueMembers = "uniqueUsers";
+			series2.ChartArea = "StatisticsChartArea";
+			series2.Legend = "StatisticsLegend";
+			series2.Name = "# time stamps";
+			series2.XValueMember = "terminalName";
+			series2.YValueMembers = "timeStamps";
+			this.statisticsChart.Series.Add(series1);
+			this.statisticsChart.Series.Add(series2);
+			this.statisticsChart.Size = new System.Drawing.Size(1281, 658);
+			this.statisticsChart.TabIndex = 0;
+			this.statisticsChart.Text = "Terminal Statistics";
+			title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			title1.Name = "StatisticsChartTitle";
+			title1.Text = "Terminal Statistics";
+			this.statisticsChart.Titles.Add(title1);
+			// 
+			// statisticsDataSet
+			// 
+			this.statisticsDataSet.DataSetName = "NewDataSet";
+			this.statisticsDataSet.Tables.AddRange(new System.Data.DataTable[] {
+            this.statisticsDataTable});
+			// 
+			// statisticsDataTable
+			// 
+			this.statisticsDataTable.Columns.AddRange(new System.Data.DataColumn[] {
+            this.statisticsTerminalNameColumn,
+            this.statisticsUniqueUsersColumn,
+            this.statisticsTimeStampsColumn});
+			this.statisticsDataTable.TableName = "StatisticsDataTable";
+			// 
+			// statisticsTerminalNameColumn
+			// 
+			this.statisticsTerminalNameColumn.AllowDBNull = false;
+			this.statisticsTerminalNameColumn.Caption = "terminal name";
+			this.statisticsTerminalNameColumn.ColumnName = "terminalName";
+			this.statisticsTerminalNameColumn.DefaultValue = "";
+			// 
+			// statisticsUniqueUsersColumn
+			// 
+			this.statisticsUniqueUsersColumn.AllowDBNull = false;
+			this.statisticsUniqueUsersColumn.Caption = "# unique users";
+			this.statisticsUniqueUsersColumn.ColumnName = "uniqueUsers";
+			this.statisticsUniqueUsersColumn.DataType = typeof(int);
+			this.statisticsUniqueUsersColumn.DefaultValue = "0";
+			// 
+			// statisticsTimeStampsColumn
+			// 
+			this.statisticsTimeStampsColumn.AllowDBNull = false;
+			this.statisticsTimeStampsColumn.Caption = "# time stamps";
+			this.statisticsTimeStampsColumn.ColumnName = "timeStamps";
+			this.statisticsTimeStampsColumn.DataType = typeof(int);
+			this.statisticsTimeStampsColumn.DefaultValue = "0";
+			// 
 			// MainForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(973, 565);
+			this.ClientSize = new System.Drawing.Size(1297, 695);
 			this.Controls.Add(this.tabControl);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "NetDS - Web Services - Control Station";
@@ -256,6 +360,10 @@
 			((System.ComponentModel.ISupportInitialize)(this.newsStatusGridView)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.newsStatusDataSet)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.newsStatusDataTable)).EndInit();
+			this.statisticsTab.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.statisticsChart)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.statisticsDataSet)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.statisticsDataTable)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -278,5 +386,11 @@
 		private System.Data.DataColumn newsStatusStatusColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn terminalDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataVisualization.Charting.Chart statisticsChart;
+		private System.Data.DataSet statisticsDataSet;
+		private System.Data.DataTable statisticsDataTable;
+		private System.Data.DataColumn statisticsTerminalNameColumn;
+		private System.Data.DataColumn statisticsUniqueUsersColumn;
+		private System.Data.DataColumn statisticsTimeStampsColumn;
 	}
 }
