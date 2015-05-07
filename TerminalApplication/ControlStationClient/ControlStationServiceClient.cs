@@ -10,10 +10,12 @@ namespace BFH.NetDS.WebServices.Terminal.ControlStationClient {
 	public class ControlStationServiceClient {
 
 		private string host;
+		private int port;
 
-		public ControlStationServiceClient(string host) {
+		public ControlStationServiceClient(string host, int port) {
 
 			this.host = host;
+			this.port = port;
 		}
 
 		public async Task<List<Employee>> FetchEmployeesAsync() { return await ServiceGetAsync<List<Employee>>("employee"); }
@@ -34,8 +36,9 @@ namespace BFH.NetDS.WebServices.Terminal.ControlStationClient {
 
 		private async Task<T> ServicePostAsync<T>(string path, T body) {
 
-			var req = WebRequest.CreateHttp(string.Format("http://{0}:6789/{1}", host, path));
 			var ser = new JavaScriptSerializer();
+
+			var req = WebRequest.CreateHttp(string.Format("http://{0}:{1}/{2}", host, port, path));
 			using (var stm = new StreamWriter(await req.GetRequestStreamAsync()))
 				await stm.WriteAsync(ser.Serialize(body));
 
@@ -46,9 +49,10 @@ namespace BFH.NetDS.WebServices.Terminal.ControlStationClient {
 
 		private async Task<T> ServiceGetAsync<T>(string path) {
 
-			var req = WebRequest.CreateHttp(string.Format("http://{0}:6789/{1}", host, path));
-			var res = (HttpWebResponse)await req.GetResponseAsync();
 			var ser = new JavaScriptSerializer();
+
+			var req = WebRequest.CreateHttp(string.Format("http://{0}:{1}/{2}", host, port, path));
+			var res = (HttpWebResponse)await req.GetResponseAsync();
 			using (var stm = new StreamReader(res.GetResponseStream()))
 				return ser.Deserialize<T>(await stm.ReadToEndAsync());
 		}

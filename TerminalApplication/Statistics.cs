@@ -1,21 +1,28 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace BFH.NetDS.WebServices.Terminal {
 
 	[DataContract]
 	public class Statistics {
 
-		[DataMember]
-		public int numberOfUniqueUsers { get; private set; }
+		public HashSet<string> uniqueUsers { get; private set; }
 
 		[DataMember]
-		public int numberOfTimeStamps { get; private set; }
+		public int numberOfUniqueUsers {
+			get { return uniqueUsers.Count; }
+			private set { throw new InvalidOperationException("Cannot change the numberOfUniqueUsers directly."); }
+		}
 
-		public Statistics() : this(0, 0) { }
+		[DataMember]
+		public int numberOfTimeStamps { get; set; }
 
-		public Statistics(int numberOfUniqueUsers, int numberOfTimeStamps) {
+		public Statistics() : this(new HashSet<string>(), 0) { }
 
-			this.numberOfUniqueUsers = numberOfUniqueUsers;
+		public Statistics(HashSet<string> uniqueUsers, int numberOfTimeStamps) {
+
+			this.uniqueUsers = uniqueUsers;
 			this.numberOfTimeStamps = numberOfTimeStamps;
 		}
 	}
