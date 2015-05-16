@@ -39,11 +39,22 @@ namespace BFH.NetDS.WebServices.Terminal {
 
 			timeStampsDataTable.Rows.Clear();
 
-			timeStamps.timeStamps.ForEach(s => timeStampsDataTable.Rows.Add(s, new TimeSpan()));
+			var ts = new TimeSpan();
+			for (var i = 0; i < timeStamps.timeStamps.Count - 1; ) {
+				timeStampsDataTable.Rows.Add(timeStamps.timeStamps[i], ts);
+
+				if (timeStamps.timeStamps[i].Date == timeStamps.timeStamps[i + 1].Date) {
+					ts += timeStamps.timeStamps[i + 1] - timeStamps.timeStamps[i];
+					timeStampsDataTable.Rows.Add(timeStamps.timeStamps[i + 1], ts);
+					i += 2;
+				} else
+					i++;
+			}
 		}
 
 		private void closeButton_Click(object sender, EventArgs e) {
 
+			Close();
 		}
 	}
 }
