@@ -16,6 +16,8 @@ namespace BFH.NetDS.WebServices.Terminal {
 
 			this.mainForm = mainForm;
 			this.employeeLogin = employeeLogin;
+
+			this.Text = string.Format("NetDS - Web Services - {0} Details", employeeLogin);
 		}
 
 		private async void EmployeeDetailsForm_Load(object sender, EventArgs e) {

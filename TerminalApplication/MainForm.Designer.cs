@@ -31,15 +31,15 @@
 			this.rootTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			this.splitContainer = new System.Windows.Forms.SplitContainer();
 			this.employeeGroupBox = new System.Windows.Forms.GroupBox();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.employeeDataGridView = new System.Windows.Forms.DataGridView();
 			this.loginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.addEmployeeButton = new System.Windows.Forms.Button();
 			this.newsGroupBox = new System.Windows.Forms.GroupBox();
 			this.newsTextBox = new System.Windows.Forms.RichTextBox();
-			this.portLabel = new System.Windows.Forms.Label();
 			this.hostLabel = new System.Windows.Forms.Label();
 			this.hostTextBox = new System.Windows.Forms.TextBox();
-			this.portTextBox = new System.Windows.Forms.TextBox();
 			this.connectButton = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.employeeDataSet)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.employeeDataTable)).BeginInit();
@@ -49,6 +49,7 @@
 			this.splitContainer.Panel2.SuspendLayout();
 			this.splitContainer.SuspendLayout();
 			this.employeeGroupBox.SuspendLayout();
+			this.tableLayoutPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.employeeDataGridView)).BeginInit();
 			this.newsGroupBox.SuspendLayout();
 			this.SuspendLayout();
@@ -85,18 +86,14 @@
 			// 
 			// rootTableLayoutPanel
 			// 
-			this.rootTableLayoutPanel.ColumnCount = 5;
+			this.rootTableLayoutPanel.ColumnCount = 3;
 			this.rootTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.rootTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.rootTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.rootTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.rootTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.rootTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.rootTableLayoutPanel.Controls.Add(this.splitContainer, 0, 1);
-			this.rootTableLayoutPanel.Controls.Add(this.portLabel, 2, 0);
 			this.rootTableLayoutPanel.Controls.Add(this.hostLabel, 0, 0);
 			this.rootTableLayoutPanel.Controls.Add(this.hostTextBox, 1, 0);
-			this.rootTableLayoutPanel.Controls.Add(this.portTextBox, 3, 0);
-			this.rootTableLayoutPanel.Controls.Add(this.connectButton, 4, 0);
+			this.rootTableLayoutPanel.Controls.Add(this.connectButton, 2, 0);
 			this.rootTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.rootTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
 			this.rootTableLayoutPanel.Name = "rootTableLayoutPanel";
@@ -108,7 +105,7 @@
 			// 
 			// splitContainer
 			// 
-			this.rootTableLayoutPanel.SetColumnSpan(this.splitContainer, 5);
+			this.rootTableLayoutPanel.SetColumnSpan(this.splitContainer, 3);
 			this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.splitContainer.Location = new System.Drawing.Point(0, 29);
 			this.splitContainer.Margin = new System.Windows.Forms.Padding(0);
@@ -132,7 +129,7 @@
 			// 
 			// employeeGroupBox
 			// 
-			this.employeeGroupBox.Controls.Add(this.employeeDataGridView);
+			this.employeeGroupBox.Controls.Add(this.tableLayoutPanel1);
 			this.employeeGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.employeeGroupBox.Location = new System.Drawing.Point(5, 5);
 			this.employeeGroupBox.Margin = new System.Windows.Forms.Padding(2);
@@ -142,6 +139,22 @@
 			this.employeeGroupBox.TabIndex = 0;
 			this.employeeGroupBox.TabStop = false;
 			this.employeeGroupBox.Text = "Employees";
+			// 
+			// tableLayoutPanel1
+			// 
+			this.tableLayoutPanel1.ColumnCount = 2;
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel1.Controls.Add(this.employeeDataGridView, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.addEmployeeButton, 1, 1);
+			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 15);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			this.tableLayoutPanel1.RowCount = 2;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(364, 347);
+			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// employeeDataGridView
 			// 
@@ -155,18 +168,19 @@
 			this.employeeDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.loginDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn});
+			this.tableLayoutPanel1.SetColumnSpan(this.employeeDataGridView, 2);
 			this.employeeDataGridView.DataMember = "EmployeeDataTable";
 			this.employeeDataGridView.DataSource = this.employeeDataSet;
 			this.employeeDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.employeeDataGridView.Location = new System.Drawing.Point(2, 15);
+			this.employeeDataGridView.Location = new System.Drawing.Point(2, 2);
 			this.employeeDataGridView.Margin = new System.Windows.Forms.Padding(2);
 			this.employeeDataGridView.MultiSelect = false;
 			this.employeeDataGridView.Name = "employeeDataGridView";
 			this.employeeDataGridView.ReadOnly = true;
 			this.employeeDataGridView.RowTemplate.Height = 24;
 			this.employeeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.employeeDataGridView.Size = new System.Drawing.Size(364, 347);
-			this.employeeDataGridView.TabIndex = 0;
+			this.employeeDataGridView.Size = new System.Drawing.Size(360, 314);
+			this.employeeDataGridView.TabIndex = 1;
 			this.employeeDataGridView.SelectionChanged += new System.EventHandler(this.employeeDataGridView_SelectionChanged);
 			// 
 			// loginDataGridViewTextBoxColumn
@@ -184,6 +198,17 @@
 			this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
 			this.nameDataGridViewTextBoxColumn.ReadOnly = true;
 			this.nameDataGridViewTextBoxColumn.Width = 58;
+			// 
+			// addEmployeeButton
+			// 
+			this.addEmployeeButton.AutoSize = true;
+			this.addEmployeeButton.Location = new System.Drawing.Point(255, 321);
+			this.addEmployeeButton.Name = "addEmployeeButton";
+			this.addEmployeeButton.Size = new System.Drawing.Size(106, 23);
+			this.addEmployeeButton.TabIndex = 2;
+			this.addEmployeeButton.Text = "add new employee";
+			this.addEmployeeButton.UseVisualStyleBackColor = true;
+			this.addEmployeeButton.Click += new System.EventHandler(this.addEmployeeButton_Click);
 			// 
 			// newsGroupBox
 			// 
@@ -209,17 +234,6 @@
 			this.newsTextBox.TabIndex = 0;
 			this.newsTextBox.Text = "";
 			// 
-			// portLabel
-			// 
-			this.portLabel.AutoSize = true;
-			this.portLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.portLabel.Location = new System.Drawing.Point(248, 0);
-			this.portLabel.Name = "portLabel";
-			this.portLabel.Size = new System.Drawing.Size(60, 29);
-			this.portLabel.TabIndex = 2;
-			this.portLabel.Text = "server port:";
-			this.portLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
 			// hostLabel
 			// 
 			this.hostLabel.AutoSize = true;
@@ -240,19 +254,11 @@
 			this.hostTextBox.TabIndex = 4;
 			this.hostTextBox.Text = "localhost";
 			// 
-			// portTextBox
-			// 
-			this.portTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.portTextBox.Location = new System.Drawing.Point(314, 3);
-			this.portTextBox.Name = "portTextBox";
-			this.portTextBox.Size = new System.Drawing.Size(171, 20);
-			this.portTextBox.TabIndex = 5;
-			this.portTextBox.Text = "6789";
-			// 
 			// connectButton
 			// 
 			this.connectButton.AutoSize = true;
-			this.connectButton.Location = new System.Drawing.Point(491, 3);
+			this.connectButton.Dock = System.Windows.Forms.DockStyle.Left;
+			this.connectButton.Location = new System.Drawing.Point(248, 3);
 			this.connectButton.Name = "connectButton";
 			this.connectButton.Size = new System.Drawing.Size(100, 23);
 			this.connectButton.TabIndex = 6;
@@ -281,6 +287,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
 			this.splitContainer.ResumeLayout(false);
 			this.employeeGroupBox.ResumeLayout(false);
+			this.tableLayoutPanel1.ResumeLayout(false);
+			this.tableLayoutPanel1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.employeeDataGridView)).EndInit();
 			this.newsGroupBox.ResumeLayout(false);
 			this.ResumeLayout(false);
@@ -296,15 +304,15 @@
 		private System.Windows.Forms.TableLayoutPanel rootTableLayoutPanel;
 		private System.Windows.Forms.SplitContainer splitContainer;
 		private System.Windows.Forms.GroupBox employeeGroupBox;
+		private System.Windows.Forms.GroupBox newsGroupBox;
+		private System.Windows.Forms.RichTextBox newsTextBox;
+		private System.Windows.Forms.Label hostLabel;
+		private System.Windows.Forms.TextBox hostTextBox;
+		private System.Windows.Forms.Button connectButton;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.DataGridView employeeDataGridView;
 		private System.Windows.Forms.DataGridViewTextBoxColumn loginDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-		private System.Windows.Forms.GroupBox newsGroupBox;
-		private System.Windows.Forms.RichTextBox newsTextBox;
-		private System.Windows.Forms.Label portLabel;
-		private System.Windows.Forms.Label hostLabel;
-		private System.Windows.Forms.TextBox hostTextBox;
-		private System.Windows.Forms.TextBox portTextBox;
-		private System.Windows.Forms.Button connectButton;
+		private System.Windows.Forms.Button addEmployeeButton;
 	}
 }

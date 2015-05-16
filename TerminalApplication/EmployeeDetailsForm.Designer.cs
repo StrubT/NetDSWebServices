@@ -167,7 +167,8 @@
 			this.Margin = new System.Windows.Forms.Padding(2);
 			this.Name = "EmployeeDetailsForm";
 			this.ShowIcon = false;
-			this.Text = "EmployeeDetailsForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			this.Text = "NetDS - Web Services - Employee Details";
 			this.Load += new System.EventHandler(this.EmployeeDetailsForm_Load);
 			this.rootLayoutPanel.ResumeLayout(false);
 			this.rootLayoutPanel.PerformLayout();

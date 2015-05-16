@@ -9,13 +9,13 @@ namespace BFH.NetDS.WebServices.Terminal.ControlStationClient {
 
 	public class ControlStationServiceClient {
 
-		private string host;
-		private int port;
+		public static int Port = 6789;
 
-		public ControlStationServiceClient(string host, int port) {
+		private string host;
+
+		public ControlStationServiceClient(string host) {
 
 			this.host = host;
-			this.port = port;
 		}
 
 		public async Task<List<Employee>> FetchEmployeesAsync() { return await ServiceGetAsync<List<Employee>>("employee"); }
@@ -41,7 +41,7 @@ namespace BFH.NetDS.WebServices.Terminal.ControlStationClient {
 
 			var ser = new JavaScriptSerializer();
 
-			var req = WebRequest.CreateHttp(new UriBuilder("http", host, port, path).Uri);
+			var req = WebRequest.CreateHttp(new UriBuilder("http", host, Port, path).Uri);
 			req.Method = "POST";
 			req.ContentType = "application/json";
 
@@ -57,7 +57,7 @@ namespace BFH.NetDS.WebServices.Terminal.ControlStationClient {
 
 			var ser = new JavaScriptSerializer();
 
-			var req = WebRequest.CreateHttp(new UriBuilder("http", host, port, path).Uri);
+			var req = WebRequest.CreateHttp(new UriBuilder("http", host, Port, path).Uri);
 			var res = (HttpWebResponse)await req.GetResponseAsync();
 			using (var stm = new StreamReader(res.GetResponseStream()))
 				return ser.Deserialize<R>(await stm.ReadToEndAsync());

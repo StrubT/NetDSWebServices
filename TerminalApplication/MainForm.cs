@@ -28,36 +28,57 @@ namespace BFH.NetDS.WebServices.Terminal {
 			serviceHost = TerminalService.GetServiceHost(newsTextBox, statistics);
 		}
 
-		private async void connectButton_Click(object sender, EventArgs e) {
-
-			hostTextBox.ReadOnly = true;
-			portTextBox.ReadOnly = true;
-			connectButton.Enabled = false;
-
-			serviceClient = new ControlStationServiceClient(hostTextBox.Text, int.Parse(portTextBox.Text));
-
-			suppressAutoSelection = true;
-			foreach (var emp in await serviceClient.FetchEmployeesAsync())
-				employeeDataTable.Rows.Add(emp.login, emp.name);
-			suppressAutoSelection = false;
-
-			employeeDataGridView.ClearSelection();
-		}
-
-		private void employeeDataGridView_SelectionChanged(object sender, EventArgs e) {
-
-			if (!suppressAutoSelection) {
-				foreach (var row in employeeDataGridView.SelectedRows.Cast<DataGridViewRow>())
-					new EmployeeDetailsForm(this, ((DataRowView)row.DataBoundItem).Row.Field<string>("login")).ShowDialog();
-
-				employeeDataGridView.ClearSelection();
-			}
-		}
-
 		private void MainForm_FormClosed(object sender, FormClosedEventArgs e) {
 
 			if (serviceHost != null)
 				serviceHost.Close();
+		}
+
+		private async void connectButton_Click(object sender, EventArgs e) {
+
+			hostTextBox.ReadOnly = true;
+			connectButton.Enabled = false;
+			serviceClient = new ControlStationServiceClient(hostTextBox.Text);
+
+			suppressAutoSelection = true;
+
+			foreach (var emp in await serviceClient.FetchEmployeesAsync())
+				employeeDataTable.Rows.Add(emp.login, emp.name);
+
+			employeeDataGridView.ClearSelection();
+			suppressAutoSelection = false;
+		}
+
+		private async void addEmployeeButton_Click(object sender, EventArgs e) {
+
+			var form = new EmployeeAddForm();
+			if (form.ShowDialog() == DialogResult.Cancel) return;
+
+			if (string.IsNullOrWhiteSpace(form.login) || string.IsNullOrWhiteSpace(form.name)) {
+				MessageBox.Show("You have to enter a login and a name.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			await serviceClient.AddEmployeeAsync(new Employee() { login = form.login, name = form.name });
+
+			suppressAutoSelection = true;
+
+			employeeDataTable.Rows.Clear();
+			foreach (var emp in await serviceClient.FetchEmployeesAsync())
+				employeeDataTable.Rows.Add(emp.login, emp.name);
+
+			employeeDataGridView.ClearSelection();
+			suppressAutoSelection = false;
+		}
+
+		private void employeeDataGridView_SelectionChanged(object sender, EventArgs e) {
+			if (suppressAutoSelection) return;
+
+			var row = employeeDataGridView.SelectedRows.Cast<DataGridViewRow>().SingleOrDefault();
+			if (row == null) return;
+
+			employeeDataGridView.ClearSelection();
+			new EmployeeDetailsForm(this, ((DataRowView)row.DataBoundItem).Row.Field<string>("login")).ShowDialog();
 		}
 	}
 }

@@ -48,9 +48,14 @@ namespace BFH.NetDS.WebServices.ControlStation {
 				row.SetField("status", "awaiting...");
 
 			foreach (var trm in ControlStationService.terminals)
-				using (var clt = new TerminalServiceClient(new BasicHttpBinding(), new EndpointAddress(new UriBuilder("http", trm.AddressList[0].ToString(), 5678).Uri))) {
-					await clt.SetNewsAsync(news);
-					newsStatusDataTable.Rows.Find(trm.HostName).SetField<string>("status", "done!");
+				try {
+					using (var clt = new TerminalServiceClient(new BasicHttpBinding(), new EndpointAddress(new UriBuilder("http", trm.AddressList[0].ToString(), 5678).Uri))) {
+						await clt.SetNewsAsync(news);
+						newsStatusDataTable.Rows.Find(trm.HostName).SetField<string>("status", "done!");
+					}
+
+				} catch (Exception ex) {
+					newsStatusDataTable.Rows.Find(trm.HostName).SetField<string>("status", ex.GetType().Name);
 				}
 		}
 
