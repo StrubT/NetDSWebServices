@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="12881981-c168-4060-b5fd-a9adc48efbda" activeEnvironment="Default" name="NetDSWebServicesTerminal" resourceRoot="" soapui-version="5.1.3" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="1092ed0b-3036-4893-97f2-53ef8002e5f5" wsaVersion="NONE" name="BasicHttpBinding_TerminalService" type="wsdl" bindingName="{http://tempuri.org/}BasicHttpBinding_TerminalService" soapVersion="1_1" anonymous="optional" definition="http://localhost:6789/?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:6789/?wsdl"><con:part><con:url>http://localhost:6789/?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="TerminalService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://tempuri.org/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
+<con:soapui-project id="12881981-c168-4060-b5fd-a9adc48efbda" activeEnvironment="Default" name="NetDSWebServicesTerminal" resourceRoot="" soapui-version="5.1.3" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="1092ed0b-3036-4893-97f2-53ef8002e5f5" wsaVersion="NONE" name="BasicHttpBinding_TerminalService" type="wsdl" bindingName="{http://tempuri.org/}BasicHttpBinding_TerminalService" soapVersion="1_1" anonymous="optional" definition="http://localhost:5678/?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:5678/?wsdl"><con:part><con:url>http://localhost:5678/?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="TerminalService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://tempuri.org/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:6789/?xsd=xsd0" namespace="http://tempuri.org/"/>
-      <xsd:import schemaLocation="http://localhost:6789/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
-      <xsd:import schemaLocation="http://localhost:6789/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BFH.NetDS.WebServices.Terminal"/>
+      <xsd:import schemaLocation="http://localhost:5678/?xsd=xsd0" namespace="http://tempuri.org/"/>
+      <xsd:import schemaLocation="http://localhost:5678/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+      <xsd:import schemaLocation="http://localhost:5678/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BFH.NetDS.WebServices.Terminal"/>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="TerminalService_SetNews_InputMessage">
@@ -52,11 +52,11 @@
   </wsdl:binding>
   <wsdl:service name="TerminalService">
     <wsdl:port name="BasicHttpBinding_TerminalService" binding="tns:BasicHttpBinding_TerminalService">
-      <soap:address location="http://localhost:6789/"/>
+      <soap:address location="http://localhost:5678/"/>
     </wsdl:port>
   </wsdl:service>
-</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:6789/?xsd=xsd0</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/">
-  <xs:import schemaLocation="http://localhost:6789/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BFH.NetDS.WebServices.Terminal"/>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:5678/?xsd=xsd0</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/">
+  <xs:import schemaLocation="http://localhost:5678/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BFH.NetDS.WebServices.Terminal"/>
   <xs:element name="SetNews">
     <xs:complexType>
       <xs:sequence>
@@ -81,7 +81,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:6789/?xsd=xsd2</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BFH.NetDS.WebServices.Terminal" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/BFH.NetDS.WebServices.Terminal">
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:5678/?xsd=xsd2</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BFH.NetDS.WebServices.Terminal" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/BFH.NetDS.WebServices.Terminal">
   <xs:complexType name="Statistics">
     <xs:sequence>
       <xs:element minOccurs="0" name="numberOfTimeStamps" type="xs:int"/>
@@ -89,7 +89,7 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Statistics" nillable="true" type="tns:Statistics"/>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:6789/?xsd=xsd1</con:url><con:content><![CDATA[<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:5678/?xsd=xsd1</con:url><con:content><![CDATA[<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
   <xs:element name="anyType" nillable="true" type="xs:anyType"/>
   <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
   <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
@@ -129,17 +129,20 @@
   <xs:attribute name="FactoryType" type="xs:QName"/>
   <xs:attribute name="Id" type="xs:ID"/>
   <xs:attribute name="Ref" type="xs:IDREF"/>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:6789/</con:endpoint></con:endpoints><con:operation id="8868749d-0064-4b6a-810a-cdbc59d79378" isOneWay="false" action="http://tempuri.org/TerminalService/GetStatistics" name="GetStatistics" bindingOperationName="GetStatistics" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4797ad2f-8b93-4477-9562-3b3be70d8cee" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:6789/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:5678/</con:endpoint><con:endpoint>http://localhost:6789/</con:endpoint></con:endpoints><con:operation id="8868749d-0064-4b6a-810a-cdbc59d79378" isOneWay="false" action="http://tempuri.org/TerminalService/GetStatistics" name="GetStatistics" bindingOperationName="GetStatistics" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4797ad2f-8b93-4477-9562-3b3be70d8cee" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:5678/</con:endpoint><con:request><![CDATA[<soapenv:Envelope
+	xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <tem:GetStatistics/>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/TerminalService/GetStatistics"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="315d9b78-b204-46de-afec-6d37cbc92a94" isOneWay="false" action="http://tempuri.org/TerminalService/SetNews" name="SetNews" bindingOperationName="SetNews" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="656d8275-3e5a-4fb8-bae1-ef2983f281fe" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:6789/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/TerminalService/GetStatistics"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="315d9b78-b204-46de-afec-6d37cbc92a94" isOneWay="false" action="http://tempuri.org/TerminalService/SetNews" name="SetNews" bindingOperationName="SetNews" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="656d8275-3e5a-4fb8-bae1-ef2983f281fe" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:5678/</con:endpoint><con:request><![CDATA[<soapenv:Envelope
+	xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <tem:SetNews>\r
-         <!--Optional:-->\r
-         <tem:news>?</tem:news>\r
+         <tem:news>{\_rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil\fcharset1 Verdana;}{\f1\fnil\fcharset1 Comic Sans MS;}{\f2\fnil\fcharset1 Courier New;}}{\colortbl\_red0\green0\blue0;\_red255\green255\blue255;\_red128\green128\blue128;\_red0\green127\blue0;\_red63\green112\blue63;\_red0\green127\blue127;\_red0\green0\blue127;\_red127\green0\blue127;\_red128\green64\blue128;\_red127\green127\blue0;\_red224\green192\blue224;\_red224\green255\blue224;\_red63\green127\blue63;\_red224\green240\blue255;\_red176\green0\blue64;\_red48\green96\blue160;\_red128\green64\blue32;\_red255\green243\blue255;\_red231\green255\blue215;\_red101\green153\blue0;\_red192\green192\blue192;\_red0\green0\blue255;\_red255\green0\blue0;\_red144\green176\blue144;\_red208\green208\blue208;\_red144\green176\blue176;\_red144\green144\blue176;\_red176\green144\blue176;\_red176\green176\blue144;\_red176\green176\blue176;\_red127\green175\blue127;\_red160\green192\blue144;}\f0\fs20\cf0 hello\b ,\cf2\b0  \cf0 how\cf2  \cf0 are\cf2  \cf0 you\b ?}</tem:news>\r
       </tem:SetNews>\r
    </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/TerminalService/SetNews"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
