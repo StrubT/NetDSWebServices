@@ -43,7 +43,7 @@ namespace BFH.NetDS.WebServices.Terminal {
 			for (var i = 0; i < timeStamps.timeStamps.Count; ) {
 				timeStampsDataTable.Rows.Add(timeStamps.timeStamps[i], ts);
 
-				if (timeStamps.timeStamps[i].Date == timeStamps.timeStamps[i + 1].Date) {
+				if (i + 1 < timeStamps.timeStamps.Count && timeStamps.timeStamps[i].Date == timeStamps.timeStamps[i + 1].Date) {
 					ts += timeStamps.timeStamps[i + 1] - timeStamps.timeStamps[i];
 					timeStampsDataTable.Rows.Add(timeStamps.timeStamps[i + 1], ts);
 					i += 2;
