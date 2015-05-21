@@ -40,7 +40,7 @@ namespace BFH.NetDS.WebServices.Terminal {
 			timeStampsDataTable.Rows.Clear();
 
 			var ts = new TimeSpan();
-			for (var i = 0; i < timeStamps.timeStamps.Count - 1; ) {
+			for (var i = 0; i < timeStamps.timeStamps.Count; ) {
 				timeStampsDataTable.Rows.Add(timeStamps.timeStamps[i], ts);
 
 				if (timeStamps.timeStamps[i].Date == timeStamps.timeStamps[i + 1].Date) {
