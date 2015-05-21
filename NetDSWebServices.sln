@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		NetDSWebServicesTerminal-soapui-project.xml = NetDSWebServicesTerminal-soapui-project.xml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmark", "Benchmark\Benchmark.csproj", "{FAFA6FFE-B55B-4A9D-B0E8-2D5816B17CF7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{037F53F2-0CD5-4EEA-BBDA-8914BB61E654}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{037F53F2-0CD5-4EEA-BBDA-8914BB61E654}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{037F53F2-0CD5-4EEA-BBDA-8914BB61E654}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAFA6FFE-B55B-4A9D-B0E8-2D5816B17CF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAFA6FFE-B55B-4A9D-B0E8-2D5816B17CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAFA6FFE-B55B-4A9D-B0E8-2D5816B17CF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAFA6FFE-B55B-4A9D-B0E8-2D5816B17CF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

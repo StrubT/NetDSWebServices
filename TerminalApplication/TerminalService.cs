@@ -36,13 +36,13 @@ namespace BFH.NetDS.WebServices.Terminal {
 			var host = new ServiceHost(typeof(TerminalService), Uri);
 
 #if DEBUG
-			var meta = host.Description.Behaviors.Find<ServiceMetadataBehavior>();
-			if (meta == null) host.Description.Behaviors.Add(meta = new ServiceMetadataBehavior());
-			meta.HttpGetEnabled = true;
+			var bhv = host.Description.Behaviors.Find<ServiceBehaviorAttribute>();
+			if (bhv == null) host.Description.Behaviors.Add(bhv = new ServiceBehaviorAttribute());
+			bhv.IncludeExceptionDetailInFaults = true;
 
-			var debug = host.Description.Behaviors.Find<ServiceDebugBehavior>();
-			if (debug == null) host.Description.Behaviors.Add(debug = new ServiceDebugBehavior());
-			debug.IncludeExceptionDetailInFaults = true;
+			var mta = host.Description.Behaviors.Find<ServiceMetadataBehavior>();
+			if (mta == null) host.Description.Behaviors.Add(mta = new ServiceMetadataBehavior());
+			mta.HttpGetEnabled = true;
 #endif
 
 			host.Open();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace BFH.NetDS.WebServices.Terminal.ControlStationClient {
 
@@ -39,28 +39,24 @@ namespace BFH.NetDS.WebServices.Terminal.ControlStationClient {
 
 		private async Task<R> ServicePostAsync<Q, R>(string path, Q body) {
 
-			var ser = new JavaScriptSerializer();
-
 			var req = WebRequest.CreateHttp(new UriBuilder("http", host, Port, path).Uri);
 			req.Method = "POST";
 			req.ContentType = "application/json";
 
 			using (var stm = new StreamWriter(await req.GetRequestStreamAsync()))
-				await stm.WriteAsync(ser.Serialize(body));
+				await stm.WriteAsync(JsonConvert.SerializeObject(body));
 
 			var res = (HttpWebResponse)await req.GetResponseAsync();
 			using (var stm = new StreamReader(res.GetResponseStream()))
-				return ser.Deserialize<R>(await stm.ReadToEndAsync());
+				return JsonConvert.DeserializeObject<R>(await stm.ReadToEndAsync());
 		}
 
 		private async Task<R> ServiceGetAsync<R>(string path) {
 
-			var ser = new JavaScriptSerializer();
-
 			var req = WebRequest.CreateHttp(new UriBuilder("http", host, Port, path).Uri);
 			var res = (HttpWebResponse)await req.GetResponseAsync();
 			using (var stm = new StreamReader(res.GetResponseStream()))
-				return ser.Deserialize<R>(await stm.ReadToEndAsync());
+				return JsonConvert.DeserializeObject<R>(await stm.ReadToEndAsync());
 		}
 
 		private T Sync<T>(Task<T> async) {
