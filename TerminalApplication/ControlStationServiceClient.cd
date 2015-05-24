@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BFH.NetDS.WebServices.Terminal.ControlStationClient.ControlStationServiceClient">
+    <Position X="3.5" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgEABAAAAAACAACAAAAAACAAAAAAIAAhgAABACAA=</HashCode>
+      <FileName>ControlStationClient\ControlStationServiceClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BFH.NetDS.WebServices.Terminal.ControlStationClient.Employee">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>ControlStationClient\Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BFH.NetDS.WebServices.Terminal.ControlStationClient.EmployeeTimeStamps">
+    <Position X="8" Y="1.75" Width="2" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="BFH.NetDS.WebServices.Terminal.ControlStationClient.EmployeeTimeStamps.RequestFormatted" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ControlStationClient\EmployeeTimeStamps.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="BFH.NetDS.WebServices.Terminal.ControlStationClient.EmployeeTimeStamps.ResponseFormatted" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ControlStationClient\EmployeeTimeStamps.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAACAAAAAAABAAAAAAAAAAAEAA=</HashCode>
+      <FileName>ControlStationClient\EmployeeTimeStamps.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

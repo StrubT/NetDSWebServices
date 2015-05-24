@@ -9,9 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerminalApplication", "Term
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{05301B87-F9EF-443B-9696-D3ECE4638036}"
 	ProjectSection(SolutionItems) = preProject
+		ControlStationService.png = ControlStationService.png
+		ControlStationServiceClient.png = ControlStationServiceClient.png
 		design.png = design.png
 		NetDSWebServicesControlStation-soapui-project.xml = NetDSWebServicesControlStation-soapui-project.xml
 		NetDSWebServicesTerminal-soapui-project.xml = NetDSWebServicesTerminal-soapui-project.xml
+		TerminalService.png = TerminalService.png
+		TerminalServiceClient.png = TerminalServiceClient.png
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmark", "Benchmark\Benchmark.csproj", "{FAFA6FFE-B55B-4A9D-B0E8-2D5816B17CF7}"

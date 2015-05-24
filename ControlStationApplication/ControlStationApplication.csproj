@@ -82,6 +82,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ControlStationService.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -104,6 +105,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\TerminalClient\TerminalService.wsdl" />
+    <None Include="TerminalServiceClient.cd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

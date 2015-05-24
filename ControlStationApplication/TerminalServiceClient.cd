@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BFH.NetDS.WebServices.ControlStation.TerminalClient.TerminalServiceClient" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="1.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAQAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Service References\TerminalClient\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BFH.NetDS.WebServices.ControlStation.TerminalClient.Statistics" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAACAAAAQAAAAAAAAAAAgAACAAAEAAAAAAIAAAE=</HashCode>
+      <FileName>Service References\TerminalClient\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="BFH.NetDS.WebServices.ControlStation.TerminalClient.TerminalService">
+    <Position X="3.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAQAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Service References\TerminalClient\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
