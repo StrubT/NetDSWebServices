@@ -26,9 +26,9 @@ namespace BFH.NetDS.WebServices.Terminal.ControlStationClient {
 
 		public Employee AddEmployee(Employee employee) { return Sync(AddEmployeeAsync(employee)); }
 
-		public async Task<EmployeeTimeStamps> FetchEmployeeTimeStampsAsync(String login) { return await ServiceGetAsync<EmployeeTimeStamps>(string.Format("employee/{0}", login)); }
+		public async Task<EmployeeTimeStamps> FetchEmployeeTimeStampsAsync(string login) { return await ServiceGetAsync<EmployeeTimeStamps>(string.Format("employee/{0}", login)); }
 
-		public EmployeeTimeStamps FetchEmployeeTimeStamps(String login) { return Sync(FetchEmployeeTimeStampsAsync(login)); }
+		public EmployeeTimeStamps FetchEmployeeTimeStamps(string login) { return Sync(FetchEmployeeTimeStampsAsync(login)); }
 
 		public async Task<EmployeeTimeStamps> AddEmployeeTimeStampsAsync(EmployeeTimeStamps timeStamps) {
 

@@ -61,7 +61,7 @@ namespace BFH.NetDS.WebServices.ControlStation {
 		}
 
 		[OperationContract, WebGet(UriTemplate = "employee/{login}", ResponseFormat = WebMessageFormat.Json)]
-		public EmployeeTimeStamps FetchEmployeeTimeStamps(String login) {
+		public EmployeeTimeStamps FetchEmployeeTimeStamps(string login) {
 
 			rememberTerminal();
 
@@ -75,7 +75,7 @@ namespace BFH.NetDS.WebServices.ControlStation {
 		}
 
 		[OperationContract, WebInvoke(Method = "POST", UriTemplate = "employee/{login}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-		public EmployeeTimeStamps AddEmployeeTimeStamps(String login, EmployeeTimeStamps timeStamps) {
+		public EmployeeTimeStamps AddEmployeeTimeStamps(string login, EmployeeTimeStamps timeStamps) {
 
 			rememberTerminal();
 
