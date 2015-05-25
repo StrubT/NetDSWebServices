@@ -32,7 +32,7 @@ namespace BFH.NetDS.WebServices.Terminal {
 			mainForm.statistics.uniqueUsers.Add(employeeLogin);
 			mainForm.statistics.numberOfTimeStamps++;
 
-			showTimeStamps(await mainForm.serviceClient.AddEmployeeTimeStampsAsync(new EmployeeTimeStamps() { login = employeeLogin, timeStamps = new List<DateTime> { timeStamp } }));
+			showTimeStamps(await mainForm.serviceClient.SetEmployeeTimeStampsAsync(new EmployeeTimeStamps() { login = employeeLogin, timeStamps = new List<DateTime> { timeStamp } }));
 		}
 
 		private void showTimeStamps(EmployeeTimeStamps timeStamps) {

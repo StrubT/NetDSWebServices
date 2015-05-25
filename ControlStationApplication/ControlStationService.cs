@@ -30,7 +30,7 @@ namespace BFH.NetDS.WebServices.ControlStation {
 				terminalConnected(trm);
 		}
 
-		[OperationContract, WebGet(UriTemplate = "employee", ResponseFormat = WebMessageFormat.Json)]
+		[OperationContract, WebGet(UriTemplate = "employees", ResponseFormat = WebMessageFormat.Json)]
 		public List<Employee> FetchEmployees() {
 
 			rememberTerminal();
@@ -43,7 +43,7 @@ namespace BFH.NetDS.WebServices.ControlStation {
 								select new Employee(l, n)).ToList();
 		}
 
-		[OperationContract, WebInvoke(Method = "POST", UriTemplate = "employee", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+		[OperationContract, WebInvoke(Method = "POST", UriTemplate = "employees", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
 		public Employee AddEmployee(Employee employee) {
 
 			rememberTerminal();
@@ -60,7 +60,7 @@ namespace BFH.NetDS.WebServices.ControlStation {
 			return employee;
 		}
 
-		[OperationContract, WebGet(UriTemplate = "employee/{login}", ResponseFormat = WebMessageFormat.Json)]
+		[OperationContract, WebGet(UriTemplate = "employees/{login}", ResponseFormat = WebMessageFormat.Json)]
 		public EmployeeTimeStamps FetchEmployeeTimeStamps(string login) {
 
 			rememberTerminal();
@@ -74,8 +74,8 @@ namespace BFH.NetDS.WebServices.ControlStation {
 																						 select d);
 		}
 
-		[OperationContract, WebInvoke(Method = "POST", UriTemplate = "employee/{login}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-		public EmployeeTimeStamps AddEmployeeTimeStamps(string login, EmployeeTimeStamps timeStamps) {
+		[OperationContract, WebInvoke(Method = "PUT", UriTemplate = "employees/{login}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+		public EmployeeTimeStamps SetEmployeeTimeStamps(string login, EmployeeTimeStamps timeStamps) {
 
 			rememberTerminal();
 

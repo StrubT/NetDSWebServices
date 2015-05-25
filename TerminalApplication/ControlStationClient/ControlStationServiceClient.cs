@@ -18,29 +18,29 @@ namespace BFH.NetDS.WebServices.Terminal.ControlStationClient {
 			this.host = host;
 		}
 
-		public async Task<List<Employee>> FetchEmployeesAsync() { return await ServiceGetAsync<List<Employee>>("employee"); }
+		public async Task<List<Employee>> FetchEmployeesAsync() { return await RequestServiceAsync<List<Employee>>("employees"); }
 
 		public List<Employee> FetchEmployees() { return Sync(FetchEmployeesAsync()); }
 
-		public async Task<Employee> AddEmployeeAsync(Employee employee) { return await ServicePostAsync<Employee, Employee>("employee", employee); }
+		public async Task<Employee> AddEmployeeAsync(Employee employee) { return await InvokeServiceAsync<Employee, Employee>("POST", "employees", employee); }
 
 		public Employee AddEmployee(Employee employee) { return Sync(AddEmployeeAsync(employee)); }
 
-		public async Task<EmployeeTimeStamps> FetchEmployeeTimeStampsAsync(string login) { return await ServiceGetAsync<EmployeeTimeStamps>(string.Format("employee/{0}", login)); }
+		public async Task<EmployeeTimeStamps> FetchEmployeeTimeStampsAsync(string login) { return await RequestServiceAsync<EmployeeTimeStamps>(string.Format("employees/{0}", login)); }
 
 		public EmployeeTimeStamps FetchEmployeeTimeStamps(string login) { return Sync(FetchEmployeeTimeStampsAsync(login)); }
 
-		public async Task<EmployeeTimeStamps> AddEmployeeTimeStampsAsync(EmployeeTimeStamps timeStamps) {
+		public async Task<EmployeeTimeStamps> SetEmployeeTimeStampsAsync(EmployeeTimeStamps timeStamps) {
 
-			return (await ServicePostAsync<EmployeeTimeStamps.RequestFormatted, EmployeeTimeStamps.ResponseFormatted>(string.Format("employee/{0}", timeStamps.login), timeStamps.format())).parse();
+			return (await InvokeServiceAsync<EmployeeTimeStamps.RequestFormatted, EmployeeTimeStamps.ResponseFormatted>("PUT", string.Format("employees/{0}", timeStamps.login), timeStamps.format())).parse();
 		}
 
-		public EmployeeTimeStamps AddEmployeeTimeStamps(EmployeeTimeStamps timeStamps) { return Sync(AddEmployeeTimeStampsAsync(timeStamps)); }
+		public EmployeeTimeStamps SetEmployeeTimeStamps(EmployeeTimeStamps timeStamps) { return Sync(SetEmployeeTimeStampsAsync(timeStamps)); }
 
-		private async Task<R> ServicePostAsync<Q, R>(string path, Q body) {
+		private async Task<R> InvokeServiceAsync<Q, R>(string method, string path, Q body) {
 
 			var req = WebRequest.CreateHttp(new UriBuilder("http", host, Port, path).Uri);
-			req.Method = "POST";
+			req.Method = method;
 			req.ContentType = "application/json";
 
 			using (var stm = new StreamWriter(await req.GetRequestStreamAsync()))
@@ -51,7 +51,7 @@ namespace BFH.NetDS.WebServices.Terminal.ControlStationClient {
 				return JsonConvert.DeserializeObject<R>(await stm.ReadToEndAsync());
 		}
 
-		private async Task<R> ServiceGetAsync<R>(string path) {
+		private async Task<R> RequestServiceAsync<R>(string path) {
 
 			var req = WebRequest.CreateHttp(new UriBuilder("http", host, Port, path).Uri);
 			var res = (HttpWebResponse)await req.GetResponseAsync();
