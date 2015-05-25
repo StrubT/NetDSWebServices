@@ -35,6 +35,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "documentation", "documentat
 		documentation\project_web-services_g4-strut1-touwm1_theory-only.pdf = documentation\project_web-services_g4-strut1-touwm1_theory-only.pdf
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "compiled", "compiled", "{C154DC05-32BA-41B1-AA18-6A795FC3A865}"
+	ProjectSection(SolutionItems) = preProject
+		compiled\ControlStationApplication.exe = compiled\ControlStationApplication.exe
+		compiled\data.xml = compiled\data.xml
+		compiled\Newtonsoft.Json.dll = compiled\Newtonsoft.Json.dll
+		compiled\TerminalApplication.exe = compiled\TerminalApplication.exe
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,5 +69,6 @@ Global
 		{78E08915-5CA3-4906-8470-496EE2B5CA0E} = {05301B87-F9EF-443B-9696-D3ECE4638036}
 		{F8585C84-E8CE-4F00-800C-BC9D3A2DF8A8} = {05301B87-F9EF-443B-9696-D3ECE4638036}
 		{78FEE869-87ED-414A-ADA0-37DEA1F0072B} = {05301B87-F9EF-443B-9696-D3ECE4638036}
+		{C154DC05-32BA-41B1-AA18-6A795FC3A865} = {05301B87-F9EF-443B-9696-D3ECE4638036}
 	EndGlobalSection
 EndGlobal
