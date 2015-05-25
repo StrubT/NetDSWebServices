@@ -8,17 +8,23 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerminalApplication", "TerminalApplication\TerminalApplication.csproj", "{037F53F2-0CD5-4EEA-BBDA-8914BB61E654}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{05301B87-F9EF-443B-9696-D3ECE4638036}"
-	ProjectSection(SolutionItems) = preProject
-		ControlStationService.png = ControlStationService.png
-		ControlStationServiceClient.png = ControlStationServiceClient.png
-		design.png = design.png
-		NetDSWebServicesControlStation-soapui-project.xml = NetDSWebServicesControlStation-soapui-project.xml
-		NetDSWebServicesTerminal-soapui-project.xml = NetDSWebServicesTerminal-soapui-project.xml
-		TerminalService.png = TerminalService.png
-		TerminalServiceClient.png = TerminalServiceClient.png
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmark", "Benchmark\Benchmark.csproj", "{FAFA6FFE-B55B-4A9D-B0E8-2D5816B17CF7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SoapUI", "SoapUI", "{78E08915-5CA3-4906-8470-496EE2B5CA0E}"
+	ProjectSection(SolutionItems) = preProject
+		SoapUI\NetDSWebServicesControlStation-soapui-project.xml = SoapUI\NetDSWebServicesControlStation-soapui-project.xml
+		SoapUI\NetDSWebServicesTerminal-soapui-project.xml = SoapUI\NetDSWebServicesTerminal-soapui-project.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "design", "design", "{F8585C84-E8CE-4F00-800C-BC9D3A2DF8A8}"
+	ProjectSection(SolutionItems) = preProject
+		design\ControlStationService.png = design\ControlStationService.png
+		design\ControlStationServiceClient.png = design\ControlStationServiceClient.png
+		design\system.png = design\system.png
+		design\TerminalService.png = design\TerminalService.png
+		design\TerminalServiceClient.png = design\TerminalServiceClient.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,5 +47,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{78E08915-5CA3-4906-8470-496EE2B5CA0E} = {05301B87-F9EF-443B-9696-D3ECE4638036}
+		{F8585C84-E8CE-4F00-800C-BC9D3A2DF8A8} = {05301B87-F9EF-443B-9696-D3ECE4638036}
 	EndGlobalSection
 EndGlobal
