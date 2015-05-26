@@ -7,7 +7,7 @@ using c = System.Console;
 
 namespace BFH.NetDS.WebServices.Benchmark {
 
-	public class Program {
+	public static class Program {
 
 		const int BenchmarkIterations = 10000;
 

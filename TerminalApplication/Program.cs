@@ -4,15 +4,15 @@ using System.Windows.Forms;
 
 namespace BFH.NetDS.WebServices.Terminal {
 
-public	static class Program {
+	public static class Program {
 
 		[STAThread]
-	public static void Main() {
+		public static void Main() {
 
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.ThreadException += Application_ThreadException;
-			
+
 			Application.Run(new MainForm());
 		}
 
