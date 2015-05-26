@@ -8,15 +8,15 @@ namespace BFH.NetDS.WebServices.CodingSession.Local {
 
 	public class UserInfo {
 
-		public string login { get; private set; }
+		public string accountName { get; private set; }
 
 		public string name { get; private set; }
 
 		public string description { get; private set; }
 
-		public UserInfo(string login, string name, string description) {
+		public UserInfo(string accountName, string name, string description) {
 
-			this.login = login;
+			this.accountName = accountName;
 			this.name = name;
 			this.description = description;
 		}
@@ -26,8 +26,8 @@ namespace BFH.NetDS.WebServices.CodingSession.Local {
 
 		public DateTime? lastLogon { get; private set; }
 
-		public User(string login, string name, string description, DateTime? lastLogon)
-			: base(login, name, description) {
+		public User(string accountName, string name, string description, DateTime? lastLogon)
+			: base(accountName, name, description) {
 
 			this.lastLogon = lastLogon;
 		}

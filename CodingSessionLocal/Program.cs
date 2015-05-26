@@ -7,13 +7,14 @@ namespace BFH.NetDS.WebServices.CodingSession.Local {
 
 		public static void Main() {
 
-			foreach (var usr in User.fetchUsers())
-				c.WriteLine("{0,-25} - {1}", usr.login, usr.name);
+			var usrs = User.fetchUsers();
+			foreach (var usr in usrs)
+				c.WriteLine("{0,-25} - {1}", usr.accountName, usr.name);
 
 			c.WriteLine(new string('-', 55));
 
-			foreach (var usr in new[] { User.fetchUser("ThS"), User.fetchUser("AdmThS") })
-				c.WriteLine("{0,-25} - {1,-25} - {2:yyyy-MM-dd HH:mm}", usr.login, usr.name, usr.lastLogon);
+			foreach (var usr in usrs.Select(u => User.fetchUser(u.accountName)))
+				c.WriteLine("{0,-25} - {1,-25} - {2:yyyy-MM-dd HH:mm}", usr.accountName, usr.name, usr.lastLogon);
 		}
 	}
 }
