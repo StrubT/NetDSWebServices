@@ -13,8 +13,9 @@ namespace BFH.NetDS.WebServices.CodingSession.Local {
 
 			c.WriteLine(new string('-', 55));
 
-			foreach (var usr in usrs.Select(u => User.fetchUser(u.accountName)))
-				c.WriteLine("{0,-25} - {1,-25} - {2:yyyy-MM-dd HH:mm}", usr.accountName, usr.name, usr.lastLogon);
+			c.Write("Please enter an account name: ");
+			var use = User.fetchUser(c.ReadLine());
+			c.WriteLine("{0,-25} - {1,-25} - {2:yyyy-MM-dd HH:mm}", use.accountName, use.name, use.lastLogon);
 		}
 	}
 }
