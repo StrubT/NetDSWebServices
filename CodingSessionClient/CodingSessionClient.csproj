@@ -37,6 +37,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,12 +48,45 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\UserClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Service References\UserClient\BFH.NetDS.WebServices.CodingSession.Client.UserClient.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserClient\BFH.NetDS.WebServices.CodingSession.Client.UserClient.UserInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserClient\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserClient\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserClient\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserClient\UserService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bfh.ico" />
+    <None Include="Service References\UserClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\UserClient\configuration.svcinfo" />
+    <None Include="Service References\UserClient\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\UserClient\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

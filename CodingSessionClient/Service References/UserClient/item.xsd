@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:5555/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BFH.NetDS.WebServices.CodingSession.Service" />
+  <xs:element name="fetchUsers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fetchUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BFH.NetDS.WebServices.CodingSession.Service" minOccurs="0" name="fetchUsersResult" nillable="true" type="q1:ArrayOfUserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fetchUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fetchUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BFH.NetDS.WebServices.CodingSession.Service" minOccurs="0" name="fetchUserResult" nillable="true" type="q2:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
